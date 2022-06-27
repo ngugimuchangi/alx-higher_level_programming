@@ -1,7 +1,7 @@
 
 # 0x00-python-hello_world
 
-##Tasks
+## Tasks
 
 0. Shell script that runs as Python script.
 1. Write a shell script that runs a Python code.
