@@ -1,2 +1,2 @@
 #!/bin/bash
-echo -e "import py_compile\npy_compile.compile('$PYFILE', '$PYFILEc')" | python3 && chmod a+x $PYFILEc
+python3 -m py_compile $PYFILE; mv __pycache__/*pyc ./$PYFILE'c'; chmod a+x $PYFILE'c'; rmdir __pycache__
