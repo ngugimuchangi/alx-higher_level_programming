@@ -1,4 +1,4 @@
-#!/urs/bin/python3
+#!/usr/bin/python3
 def uppercase(str):
     s2 = ''
     for i in str:
