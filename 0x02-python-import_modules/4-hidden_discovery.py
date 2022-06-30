@@ -1,9 +1,7 @@
 #!/usr/bin/python3
-__import__('hidden_4')
-
-
+from hidden_4 import *
 if __name__ == '__main__':
-    names = dir('hidden')
+    names = dir()
     for i in names:
         if i[0] == '_':
             continue
