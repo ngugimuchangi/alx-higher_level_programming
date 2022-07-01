@@ -8,3 +8,5 @@
 > Conditional loops and statements
 ### 0x02. Python - import & modules
 > Python modules and command line arguments
+### 0x03. Python - Data Structures: Lists, Tuples
+> Data structures
