@@ -22,7 +22,7 @@ int is_palindrome(listint_t **head)
 	else
 		for (i = 0; i < (len / 2 + 1); i++, temp2 = temp2->next)
 			;
-	len_cpy = len - 1;
+	len_cpy = (len / 2) - 1;
 	for (i = 0; i < (len / 2) - 1; i++)
 	{
 		for (j = 0, temp = *head; j < len_cpy; j++)
