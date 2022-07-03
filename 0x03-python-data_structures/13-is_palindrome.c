@@ -1,5 +1,25 @@
 #include "lists.h"
 /**
+ * reverse - reverse linked list
+ * @head: head of the list
+ * 
+ * Return: 0
+ */
+void reverse(listint_t **head)
+{
+	listint_t *current, *prev = NULL, *next;
+
+	current = *head;
+	while (current)
+	{
+		next = current->next;
+		current->next = prev;
+		prev = current;
+		current = next;
+	}
+	*head = prev;
+}
+/**
  * is_palindrome - checks if linked list is a palindrome
  * @head: address of the first node
  *
@@ -7,30 +27,26 @@
  */
 int is_palindrome(listint_t **head)
 {
-	int len, len_cpy, i, j;
-	listint_t *temp, *temp2;
+	int len, i, j;
+	listint_t *temp, *temp_mid;
 
 	temp = *head;
 	if (!temp || !temp->next)
 		return (1);
 	for (len = 0; temp; len++, temp = temp->next)
 		;
-	temp2 = *head;
-	if (len % 2 == 0)
-		for (i = 0; i < (len / 2); i++, temp2 = temp2->next)
-			;
-	else
-		for (i = 0; i < (len / 2 + 1); i++, temp2 = temp2->next)
-			;
-	len_cpy = (len / 2) - 1;
-	for (i = 0; i < (len / 2) - 1; i++)
+	temp_mid = *head;
+	j = (len % 2 == 0) ? (len / 2) : (len / 2) + 1;
+	for (i = 0; i < j; i++)
+		temp_mid = temp_mid->next;
+	reverse(&temp_mid);
+	temp = *head;
+	for (i = 0; i < j - 1; i++)
 	{
-		for (j = 0, temp = *head; j < len_cpy; j++)
-			temp = temp->next;
-		if (temp->n != temp2->n)
+		if (temp->n != temp_mid->n)
 			return (0);
-		len_cpy--;
-		temp2 = temp2->next;
+		temp = temp->next;
+		temp_mid = temp_mid->next;
 	}
 	return (1);
 }
