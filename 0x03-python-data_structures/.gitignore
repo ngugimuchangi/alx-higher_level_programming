@@ -16,5 +16,7 @@ linked_lists.c
 13-is_palindrome
 13-success_but_not_efficient.c
 100-print_python_list_info
-100-unsucsseful_print_python_list_info.c
+100-alt_print_python_list_info.c
+#alternative
 100-test_lists.py
+libPyList.so
