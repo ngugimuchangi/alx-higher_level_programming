@@ -14,10 +14,18 @@ void print_python_list_info(PyObject *p)
 	long int i
 	PyObject *temp = p;
 
+	/* check if pointer points to a list object */
 	if (PyList_Check(temp))
 	{
+		/* print size of list object */
 		printf("[*] Size of the Python List = %li\n", PyList_Size(temp));
-		printf("[*] Allocated = %li\n", temp->allocated)
+		/**
+		 * print allocated slots in list object
+		 * note the casting of PyListObject pointer to PyObject pointer
+		 * before accessing data
+		 */
+		printf("[*] Allocated = %li\n", ((PyListObject *)temp)->allocated);
+		/* loop through the list object printing elements and their indices */
 		for (i = 0; i < PyList_Size(temp); i++)
 			printf("Element %li: %s\n", i, PY_TYPE(PyList_GetItem(temp, i))->tp_name);
 	}
