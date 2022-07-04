@@ -11,19 +11,21 @@
  */
 void print_python_list_info(PyObject *p)
 {
-	long int i;
+	long int i, size, alloc;
 	PyObject *element;
 
 	/* Print size of list object */
-	printf("[*] Size of the Python List = %ld\n", PyList_Size(p));
+	size = PyList_Size(p);
+	printf("[*] Size of the Python List = %ld\n", size);
 	/**
 	 * print allocated slots in list object
 	 * note the casting of PyListObject pointer to PyObject pointer
 	 * before accessing data
 	 */
-	printf("[*] Allocated = %ld\n", ((PyListObject *)p)->allocated);
+	alloc =  ((PyListObject *)p)->allocated;
+	printf("[*] Allocated = %ld\n", alloc);
 	/* loop through the list object printing elements and their indices */
-	for (i = 0; i < PyList_Size(p); i++)
+	for (i = 0; i < size; i++)
 	{
 		element = PyList_Get_Item(p, i);
 		printf("Element %ld: %s\n", i, PY_TYPE(element)->tp_name);
