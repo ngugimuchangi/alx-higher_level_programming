@@ -7,7 +7,7 @@
  * Description: prints size of list, allocated fields and
  * the elements within list and their types.
  *
- * Return: Nothing
+ * Return: nothing
  */
 void print_python_list_info(PyObject *p)
 {
