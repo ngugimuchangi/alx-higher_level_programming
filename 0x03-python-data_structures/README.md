@@ -18,9 +18,6 @@
 12. Completing source code to switch value of a and b
 12. Check existence of palindrome in a list
 13. C function that prints basic info about a Python list
-&emsp;
 * Size of the list
-&emsp;
 * Allocated memory
-&emsp;
 * Elements in the list
