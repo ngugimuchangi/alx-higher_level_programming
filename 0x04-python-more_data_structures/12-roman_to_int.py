@@ -4,7 +4,8 @@ def roman_to_int(roman_string):
     if roman_string:
         for i in range(len(roman_string)):
             if roman_string[i] not in 'IVXLCDM':
-                return None;
+                res = 0
+                break
             if roman_string[i] == 'I':
                 if (i + 1) < len(roman_string):
                     if roman_string[i + 1] in 'VX':
@@ -25,4 +26,4 @@ def roman_to_int(roman_string):
                 res += 500
             if roman_string[i] == 'M':
                 res += 1000
-        return res
+    return res
