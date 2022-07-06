@@ -10,3 +10,5 @@
 > Python modules and command line arguments
 ### 0x03. Python - Data Structures: Lists, Tuples
 > Data structures
+### 0x04. Python - More Data Structures: Set, Dictionary
+> Set, Dictionary, Lambda, Map, Filter, Reduce
