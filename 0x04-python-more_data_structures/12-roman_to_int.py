@@ -17,7 +17,13 @@ def roman_to_int(roman_string):
             if roman_string[i] == 'V':
                 res += 5
             if roman_string[i] == 'X':
-                res += 10
+                if (i + 1) < len(roman_string):
+                    if roman_string[i + 1] in 'LC':
+                        res -= 10
+                    else:
+                        res += 10
+                else:
+                    res += 10
             if roman_string[i] == 'L':
                 res += 50
             if roman_string[i] == 'C':
