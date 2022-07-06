@@ -27,7 +27,13 @@ def roman_to_int(roman_string):
             if roman_string[i] == 'L':
                 res += 50
             if roman_string[i] == 'C':
-                res += 100
+                if (i + 1) < len(roman_string):
+                    if roman_string[i + 1] in 'DM':
+                        res -= 100
+                    else:
+                        res += 100
+                else:
+                    res += 100
             if roman_string[i] == 'D':
                 res += 500
             if roman_string[i] == 'M':
