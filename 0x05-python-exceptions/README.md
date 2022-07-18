@@ -7,7 +7,7 @@
 	* ZeroDivisionError
 	* TypeError
 	* IndexError
-5. Function that raises and type exception
+5. Function that raises a type exception
 6. Function that raises a name exception with a message.
 7. Function that prints and integer and handles ValueException and TypeException
 8. Function that executes a function safely
