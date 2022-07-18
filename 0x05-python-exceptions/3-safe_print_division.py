@@ -10,5 +10,5 @@ def safe_print_division(a, b):
         if res == 0:
             print("None")
         else:
-            print("{:.1f}".format(res))
+            print("{}".format(res))
             return res
