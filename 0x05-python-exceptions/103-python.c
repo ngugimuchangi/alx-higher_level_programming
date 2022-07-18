@@ -86,7 +86,7 @@ void  print_python_list(PyObject *p)
 	printf("[*] Python list info\n");
 	if (!PyList_Check(list))
 	{
-		printf("[ERROR] Invalid List Object\n");
+		printf("  [ERROR] Invalid List Object\n");
 		return;
 	}
 	printf("[*] Size of the Python List = %d\n", size);
