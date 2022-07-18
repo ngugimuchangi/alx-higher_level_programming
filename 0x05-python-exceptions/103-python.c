@@ -17,33 +17,25 @@ void print_python_bytes(PyObject *p)
 
 	setbuf(stdout, NULL);
 	printf("[.] bytes object info\n");
-	fflush(stdout);
 	if (strcmp(p->ob_type->tp_name, "bytes"))
 	{
 		printf("  [ERROR] Invalid Bytes Object\n");
-		fflush(stdout);
 		return;
 	}
 	printf("  size: %ld\n", ((PyVarObject *)p)->ob_size);
-	fflush(stdout);
 	printf("  trying string: %s\n", bytes->ob_sval);
-	fflush(stdout);
 	if (((PyVarObject *)p)->ob_size > 10)
 		size = 10;
 	else
-	size = ((PyVarObject *)p)->ob_size + 1;
-
+		size = ((PyVarObject *)p)->ob_size + 1;
 	printf("  first %d bytes: ", size);
-	fflush(stdout);
 	for (c = 0; c < size; c++)
 	{
 		printf("%02hhx", bytes->ob_sval[c]);
-		fflush(stdout);
 		if (c == (size - 1))
 			printf("\n");
 		else
 			printf(" ");
-		fflush(stdout);
 	}
 }
 
@@ -61,17 +53,14 @@ void print_python_float(PyObject *p)
 
 	setbuf(stdout, NULL);
 	printf("[.] float object info\n");
-	fflush(stdout);
 	if (strcmp(p->ob_type->tp_name, "float"))
 	{
 		printf("  [ERROR] Invalid Float Object\n");
-		fflush(stdout);
 		return;
 	}
 	i = ((PyFloatObject *) p)->ob_fval;
 	printf("  value: %s\n", PyOS_double_to_string(
 				i, 'r', 0, Py_DTSF_ADD_DOT_0, NULL));
-	fflush(stdout);
 }
 
 /**
