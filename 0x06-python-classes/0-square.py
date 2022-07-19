@@ -3,5 +3,8 @@
 
 
 class Square:
-    '''Define a square'''
+    ''' Represents a square
+    Attributes:
+        __size(int): size of a square's die
+    '''
     pass
