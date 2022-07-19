@@ -9,8 +9,8 @@ class Square:
     '''
     def __init__(self, size=0, position=(0, 0)):
         ''' Initialize instance of sqaure '''
-        self.__size = size
-        self.__position = position
+        self.size = size
+        self.position = position
 
     @property
     def size(self):
@@ -29,11 +29,11 @@ class Square:
 
     def area(self):
         ''' Calculates the area of the square '''
-        area = self.size * self.size
-        return area
+        return self.__size * self.__size
+        
 
     def my_print(self):
-        '''Prints the square '''
+        ''' Prints the square '''
         if self.__size == 0:
             print()
         else:
@@ -42,7 +42,7 @@ class Square:
             for j in range(self.__size):
                 print("".join([" " for k in range(
                     self.__position[0])]), end="")
-                print("".join(["#" for l in range(
+                print("".join(["#" for k in range(
                     self.__size)]))
 
     @property
