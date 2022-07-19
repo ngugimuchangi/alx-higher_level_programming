@@ -1,5 +1,9 @@
 #!/usr/bin/python3
+'''Square module'''
+
+
 class Square:
+    '''Initialize instance of sqaure'''
     def __init__(self, __size=0):
         try:
             if __size < 0:
