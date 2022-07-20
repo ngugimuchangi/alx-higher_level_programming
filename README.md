@@ -12,3 +12,8 @@
 > Data structures
 ### 0x04. Python - More Data Structures: Set, Dictionary
 > Set, Dictionary, Lambda, Map, Filter, Reduce
+### 0x05. Python - Exceptions
+> Handling Exception Errors
+### 0x06. Python - Classes and Objects
+> Object Oriented Programming in Python
+> * Using classes and objects
