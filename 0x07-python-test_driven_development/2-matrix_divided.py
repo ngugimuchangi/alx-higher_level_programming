@@ -20,11 +20,11 @@ def matrix_divided(matrix, div):
         raise TypeError("matrix must be a matrix "
                         "(list of lists) of integers/floats")
 
-    if type(div) is int or type(div) is float:
-        if div == 0:
-            raise ZeroDivisionError("division by zero")
-    else:
+    if type(div) not in [int, float]:
         raise TypeError("div must be a number")
+
+    if div == 0:
+        raise ZeroDivisionError("division by zero")
 
     for i in range(len(matrix)):
         if i > 1:
@@ -33,7 +33,7 @@ def matrix_divided(matrix, div):
                                 "must have the same size")
         row = []
         for num in matrix[i]:
-            if type(num) is int or type(num) is float:
+            if type(num) in [int, float]:
                 row.append(round(num / div, 2))
             else:
                 raise TypeError("matrix must be a matrix "
