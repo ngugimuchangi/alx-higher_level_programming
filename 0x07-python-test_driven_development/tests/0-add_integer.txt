@@ -1,0 +1,47 @@
+""" Returns a + b
+Works with integers and whole number floats
+
+Import module to test
+
+>>> add = __import__('0-add_integer').add_integer
+
+Check for normal situations (ints and whole number floats)
+
+>>> add(1, 2)
+3
+>>> add(1, 2.0)
+3
+>>> add(1.0, 2)
+3
+
+Check for when one argument is present, that is 'a'
+>>> add(1)
+99
+
+Check for err situations: unwanted data types
+>>> try:
+...	add('hello', 2)
+... except Exception as e:
+...	print(e)
+...
+a must be an integer
+>>> try:
+...	add(1, 'hello')
+... except Exception as e:
+...	print(e)
+...
+b must be an integer
+>>> try:
+...	add(1.1, 2)
+... except Exception as e:
+...	print(e)
+...
+a must be an integer
+>>> try:
+...	add(1, 2.2)
+... except Exception as e:
+...	print(e)
+...
+b must be an integer
+>>>
+"""
