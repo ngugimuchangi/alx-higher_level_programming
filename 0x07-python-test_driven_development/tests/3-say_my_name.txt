@@ -1,0 +1,27 @@
+"""
+Interactive test for say_my_name function
+
+Import module
+>>> name = __import__('3-say_my_name').say_my_name
+
+Check for normal scenario:
+>>> name("John", "Doe")
+John Doe
+>>> name("", "Doe")
+ Doe
+>>> name("John")
+John 
+
+Check for TypeError
+>>> try:
+... 	name(1, "Doe")
+... except Exception as e:
+... 	print(e)
+first_name must be a string
+>>> try:
+... 	name("John", 2)
+... except Exception as e:
+... 	print(e)
+last_name must be a string
+>>>
+"""
