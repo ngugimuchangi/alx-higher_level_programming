@@ -2,11 +2,9 @@
 Works with integers and whole number floats
 
 Import module to test
-
 >>> add = __import__('0-add_integer').add_integer
 
 Check for normal situations (ints and whole number floats)
-
 >>> add(1, 2)
 3
 >>> add(1, 2.0)

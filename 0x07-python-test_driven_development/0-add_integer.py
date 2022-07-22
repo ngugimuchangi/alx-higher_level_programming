@@ -1,14 +1,19 @@
 #!/usr/bin/python3
 """
-    Computation module
+    "0-add integer module"
+    Module's functions:
+        add_integer(a, b)
 """
 
 
 def add_integer(a, b=98):
     """
         Addition function
-        Arguments: two integers or whole number floats: a and b
-        Return: sum of the two numbers
+        Args:
+            a (int, whole number float): first number
+            b (int, whole number float): second number
+        Return:
+            sum (int) of the a and b
     """
     if type(a) is int or type(a) is float:
         if type(a) is float:

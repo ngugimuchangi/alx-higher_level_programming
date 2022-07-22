@@ -1,0 +1,49 @@
+"""
+Interactive test for matrix function
+
+Import module
+>>> neo = __import__('2-matrix_divided').matrix_divided
+
+Check for normal scenarios
+>>> try:
+... 	neo([[1, 2], [3, 4]], 2)
+... except Exception as e:
+...	print(e)
+[[0.5, 1.0], [1.5, 2.0]]
+
+Check for matrix is not a list scenario
+>>> try:
+... 	neo('hello', 1)
+... except Exception as e:
+...	print(e)
+matrix must be a matrix (list of lists) of integers/floats
+
+Check for division by zero
+>>> try:
+... 	neo([[1, 2], [3, 4]], 0)
+... except Exception as e:
+...	print(e)
+division by zero
+
+Check for wrong data type for div
+>>> try:
+... 	neo([[1,2],[3, 4]], 'hello')
+... except Exception as e:
+...	print(e)
+div must be a number
+
+Check for matrix with different row lengths 
+>>> try:
+... 	neo([[1, 2], [3, 4, 5], [6, 7]], 2)
+... except Exception as e:
+...	print(e)
+Each row of the matrix must have the same size
+
+Check for matrix with wrong data types
+>>> try:
+... 	neo([[1, 2], [3, 'four']], 2)
+... except Exception as e:
+...	print(e)
+matrix must be a matrix (list of lists) of integers/floats
+>>>
+"""
