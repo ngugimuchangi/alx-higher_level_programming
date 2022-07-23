@@ -1,0 +1,42 @@
+"""
+Interacitve test for print_square function
+
+Import module
+>>> square = __import__('4-print_square').print_square
+
+Check for size greater than zero
+>>> square(0)
+<BLANKLINE>
+>>> square(1)
+#
+>>> square(2)
+##
+##
+
+Check for size less than 0 (ValueError)
+>>> try:
+... 	square(-1)
+... except Exception as e:
+... 	print(e)
+size must be >= 0
+
+Check for non integer data types (TypeError)
+>>> try:
+... 	square(13.0)
+... except Exception as e:
+... 	print(e)
+size must be an integer
+
+>>> try:
+... 	square(13.1)
+... except Exception as e:
+... 	print(e)
+size must be an integer
+
+>>> try:
+... 	square("size")
+... except Exception as e:
+... 	print(e)
+size must be an integer
+>>>
+"""

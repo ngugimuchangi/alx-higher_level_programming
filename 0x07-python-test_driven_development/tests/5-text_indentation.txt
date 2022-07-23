@@ -1,0 +1,64 @@
+"""
+Interactive test for text_indentation function
+
+Import module
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+Multiple delimiters scenario
+>>> text_indentation("Hello. My name is Morpheus: \
+... What is your name?")
+Hello.
+<BLANKLINE>
+My name is Morpheus:
+<BLANKLINE>
+What is your name?
+<BLANKLINE>
+
+>>> text_indentation("Hello. My name is Morpheus: \
+... What is your name? Welcome to the matrix")
+Hello.
+<BLANKLINE>
+My name is Morpheus:
+<BLANKLINE>
+What is your name?
+<BLANKLINE>
+Welcome to the matrix
+
+No delimeter scenario
+>>> text_indentation("Hello! My name is Morpheus")
+Hello! My name is Morpheus
+
+Leading spaces scenarios
+>>> text_indentation("    Hello.     My name is Morpheus: \
+... What is your name?     Welcome to the matrix     ")
+Hello.
+<BLANKLINE>
+My name is Morpheus:
+<BLANKLINE>
+What is your name?
+<BLANKLINE>
+Welcome to the matrix
+
+>>> text_indentation("    Hello.     My name is Morpheus   : \
+... What is your name    ?   ")
+Hello.
+<BLANKLINE>
+My name is Morpheus   :
+<BLANKLINE>
+What is your name    ?
+<BLANKLINE>
+
+None string value scenario(TypeError)
+>>> try:
+... 	text_indentation(["hello"])
+... except Exception as e:
+... 	print(e)
+text must be a string
+
+>>> try:
+... 	text_indentation(("hello", "world"))
+... except Exception as e:
+... 	print(e)
+text must be a string
+>>>
+"""
