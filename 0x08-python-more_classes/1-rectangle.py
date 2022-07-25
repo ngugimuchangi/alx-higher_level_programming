@@ -13,8 +13,7 @@ class Rectangle:
         """
             Object instace initialization method
         """
-        self.width = width
-        self.height = height
+        self.width, self.height = width, height
 
     @property
     def width(self):
