@@ -14,7 +14,7 @@ class Rectangle:
             Object instace initialization method
         """
 
-        self.width, self.height = width, height
+        self.__width, self.__height = width, height
 
     @property
     def width(self):
