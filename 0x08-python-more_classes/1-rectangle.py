@@ -9,7 +9,7 @@ class Rectangle:
     """
         Rectangle class
     """
-    def __init__(self, width, height):
+    def __init__(self, width=0, height=0):
         """
             Object instace initialization method
         """
@@ -24,15 +24,15 @@ class Rectangle:
         return self.__width
 
     @width.setter
-    def width(self, width):
+    def width(self, value):
         """
             width setter method
         """
-        if type(width) is not int:
+        if type(value) is not int:
             raise TypeError("width must be an integer")
-        if width < 0:
+        if value < 0:
             raise ValueError("width must be >= 0")
-        self.__width = width
+        self.__width = value
 
     @property
     def height(self):
@@ -42,12 +42,12 @@ class Rectangle:
         return self.__height
 
     @height.setter
-    def height(self, height):
+    def height(self, value):
         """
             height setter method
         """
-        if type(height) is not int:
+        if type(value) is not int:
             raise TypeError("height must be an integer")
-        if height < 0:
+        if value < 0:
             raise ValueError("height must be >= 0")
-        self.__height = height
+        self.__height = value
