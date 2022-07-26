@@ -10,4 +10,4 @@
 7. Public class attribute to specify symbol to print rectangle instance
 8. Static method to compare areas of two rectangle instances
 9. Class class method for constructing new rectangle instances
-10. N queens
+10. N queens puzzle
