@@ -17,3 +17,9 @@
 ### 0x06. Python - Classes and Objects
 > Object Oriented Programming in Python
 > * Using classes and objects
+### 0x07. Python - Test-driven development
+> Test-driven Development in Python
+> * Unit Tests and Interactive Tests for Python modules
+### 0x08. Python - More Classes and Objects
+> Object Oriented Programming in Python
+> * More classes and objects
