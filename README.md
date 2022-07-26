@@ -23,3 +23,5 @@
 ### 0x08. Python - More Classes and Objects
 > Object Oriented Programming in Python
 > * More classes and objects
+### 0x09. Python - Everything is object
+> Objects and values, Mutable vs immutable types, Aliasing, Clonning lists and Mutations
