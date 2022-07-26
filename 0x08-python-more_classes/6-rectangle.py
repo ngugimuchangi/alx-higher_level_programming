@@ -90,5 +90,9 @@ class Rectangle:
 
     @staticmethod
     def __del__():
+        """
+            Print text and reduce number of instances when an class instance
+            is deleted
+        """
         print("Bye rectangle...")
         Rectangle.number_of_instances -= 1

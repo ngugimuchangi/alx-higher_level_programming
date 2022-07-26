@@ -86,4 +86,7 @@ class Rectangle:
 
     @staticmethod
     def __del__():
+        """
+            Print text when an class instance is deleted
+        """
         print("Bye rectangle...")
