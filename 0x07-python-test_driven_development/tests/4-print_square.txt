@@ -14,7 +14,7 @@ True
 Check for normal scenarios
 1. Size is 0
 >>> square(0)
-<BLANKLINE>
+>>>
 
 2. Size is 1
 >>> square(1)
