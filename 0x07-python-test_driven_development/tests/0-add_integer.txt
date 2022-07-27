@@ -1,8 +1,27 @@
-""" Returns a + b
-Works with integers and whole number floats
+""" 
+Interactive Test for '0-add_integer module'
+Function: add_integer
+Args:
+	a (int or float)
+	b (int or float)
+Return: int(a + b)
 
-Import module to test
+
+Check for module doc string
+>>> mod = __import__('0-add_integer').__doc__
+>>> len(mod) > 1
+True
+
+Import function to test check doc string
 >>> add = __import__('0-add_integer').add_integer
+>>> len(add.__doc__) > 1
+True
+
+Check when no arguments are passed:
+>>> add()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: add_integer() missing 1 required positional argument: 'a'
 
 Check for normal situations (ints and whole number floats)
 >>> add(1, 2)
