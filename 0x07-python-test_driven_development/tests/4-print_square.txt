@@ -1,38 +1,72 @@
 """
 Interacitve test for print_square function
 
-Import module
->>> square = __import__('4-print_square').print_square
+Check module's docstring
+>>> mod = __import__('4-print_square').__doc__
+>>> len(mod) > 1
+True
 
-Check for size greater than zero
+Import function and check docstring
+>>> square = __import__('4-print_square').print_square
+>>> len(square.__doc__) > 1
+True
+
+Check for normal scenarios
+1. Size is 0
 >>> square(0)
 <BLANKLINE>
+
+2. Size is 1
 >>> square(1)
 #
+
+3. Size is greater than -1
 >>> square(2)
 ##
 ##
 
-Check for size less than 0 (ValueError)
+Check error scenarios
+1. Pass few arguments
+>>> square()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: print_square() missing 1 required positional argument: 'size'
+
+2. Pass too many arguments
+>>> square(1, 2)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: print_square() takes 1 positional argument but 2 were given
+
+3. Size is less than zero (ValueError)
 >>> try:
 ... 	square(-1)
 ... except Exception as e:
 ... 	print(e)
 size must be >= 0
 
-Check for non integer data types (TypeError)
+4. Pass size as None(TypeError)
+>>> try:
+... 	square(None)
+... except Exception as e:
+... 	print(e)
+size must be an integer
+
+5. Pass size as float but is integer (TypeError)
 >>> try:
 ... 	square(13.0)
 ... except Exception as e:
 ... 	print(e)
 size must be an integer
 
+6. Pass size as non-integer float (TypeError)
 >>> try:
 ... 	square(13.1)
 ... except Exception as e:
 ... 	print(e)
 size must be an integer
 
+7. Pass size as string (TypeError)
 >>> try:
 ... 	square("size")
 ... except Exception as e:
