@@ -14,15 +14,15 @@ True
 Check for normal scenario:
 1. Pass first_name and second name
 >>> name("John", "Doe")
-John Doe
+My name is John Doe
 
 2. Pass first_name only
 >>> name("John")
-John 
+My name is John 
 
 3. Pass last_name only
 >>> name("", "Doe")
- Doe
+My name is  Doe
 
 4. Pass empty first_name and last_name
 >>> name("", "")
