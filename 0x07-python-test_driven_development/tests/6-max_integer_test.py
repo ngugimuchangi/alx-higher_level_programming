@@ -7,6 +7,7 @@
             test_max_integer
 """
 import unittest
+max_integer = __import__('6-max_integer').max_integer
 
 
 class TestMaxInteger(unittest.TestCase):
@@ -14,7 +15,6 @@ class TestMaxInteger(unittest.TestCase):
         TestCase subclass
         Use: testing max_integer function in 6-max_integer module
     """
-    max_integer = __import__('6-max_integer').max_integer
 
     def test_max_interger(self):
         """
@@ -27,6 +27,7 @@ class TestMaxInteger(unittest.TestCase):
         self.assertAlmostEqual(max_integer([4, 3, 2, 1]), 4)
         self.assertAlmostEqual(max_integer([1, 5, 0, 5]), 5)
         self.assertAlmostEqual(max_integer([1, 9, 3, 7]), 9)
+        self.assertTrue(len(max_integer) > 1)
 
     def test_max_integer_raises(self):
         """

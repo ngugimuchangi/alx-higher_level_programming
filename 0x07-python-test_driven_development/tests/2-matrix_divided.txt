@@ -1,45 +1,87 @@
 """
 Interactive test for matrix function
 
-Import module
+Check module's docstring
+>>> mod = __import__('2-matrix_divided').__doc__
+>>> len(mod) > 1
+True
+
+Import module's function and check its docstring
 >>> neo = __import__('2-matrix_divided').matrix_divided
+>>> len(neo.__doc__) > 1
+True
 
 Check for normal scenarios
+1. Divisor is an integer
 >>> try:
 ... 	neo([[1, 2], [3, 4]], 2)
 ... except Exception as e:
 ...	print(e)
 [[0.5, 1.0], [1.5, 2.0]]
 
-Check for matrix is not a list scenario
+2. Divisor is a float
 >>> try:
-... 	neo('hello', 1)
+... 	neo([[3, 6], [9, 12]], 0.5)
+... except Exception as e:
+...	print(e)
+[[6.0, 12.0], [18.0, 24.0]]
+
+
+Check for error scenarios:
+1. Passing no arguments
+>>> neo()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'
+
+2. Passing few arguments
+>>> neo([[1 ,2], [3, 4]])
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: matrix_divided() missing 1 required positional argument: 'div'
+
+3. Passing too many arguments
+>>> neo([[1, 2], [3, 4]], 1, None)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: matrix_divided() takes 2 positional arguments but 3 were given
+
+4. Passing None instead of list
+>>> try:
+... 	neo(None, 1)
 ... except Exception as e:
 ...	print(e)
 matrix must be a matrix (list of lists) of integers/floats
 
-Check for division by zero
+5. Matrix is not a list of lists
+>>> try:
+... 	neo([[1, 2], [3, 4], (5, 6)], 1)
+... except Exception as e:
+...	print(e)
+matrix must be a matrix (list of lists) of integers/floats
+
+6. Division by zero
 >>> try:
 ... 	neo([[1, 2], [3, 4]], 0)
 ... except Exception as e:
 ...	print(e)
 division by zero
 
-Check for wrong data type for div
+7. Divisor is not an integer or float
 >>> try:
 ... 	neo([[1,2],[3, 4]], 'hello')
 ... except Exception as e:
 ...	print(e)
 div must be a number
 
-Check for matrix with different row lengths 
+8. Matrix has rows with different lengths 
 >>> try:
 ... 	neo([[1, 2], [3, 4, 5], [6, 7]], 2)
 ... except Exception as e:
 ...	print(e)
 Each row of the matrix must have the same size
 
-Check for matrix with wrong data types
+9. Matrix with wrong data types (not int or float)
 >>> try:
 ... 	neo([[1, 2], [3, 'four']], 2)
 ... except Exception as e:
