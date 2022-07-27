@@ -4,4 +4,4 @@
 * Aliasing
 * Immutable vs mutable types
 * Mutation
-* List Cloning
+* List cloning
