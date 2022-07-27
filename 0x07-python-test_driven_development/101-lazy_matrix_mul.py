@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """
     Lazy matrix module
     Functions:
