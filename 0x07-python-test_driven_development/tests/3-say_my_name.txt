@@ -1,23 +1,68 @@
 """
 Interactive test for say_my_name function
 
-Import module
+Check for module's docstring
+>>> mod = __import__('3-say_my_name').__doc__
+>>> len(mod) > 1
+True
+
+Import function to test and check docstring
 >>> name = __import__('3-say_my_name').say_my_name
+>>> len(name.__doc__) > 1
+True
 
 Check for normal scenario:
+1. Pass first_name and second name
 >>> name("John", "Doe")
 John Doe
->>> name("", "Doe")
- Doe
+
+2. Pass first_name only
 >>> name("John")
 John 
 
-Check for TypeError
+3. Pass last_name only
+>>> name("", "Doe")
+ Doe
+
+4. Pass empty first_name and last_name
+>>> name("", "")
+<BLANKLINE>
+
+Check for err scenarios
+1. Pass few arguments
+>>> name()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: say_my_name() missing 1 required positional argument: 'first_name'
+
+2. Pass too many argments
+>>> name("John", "Doe", "Hi")
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: say_my_name() takes from 1 to 2 positional arguments but 3 were given
+
+3. first_name as None
+>>> try:
+... 	name(None, "Doe")
+... except Exception as e:
+... 	print(e)
+first_name must be a string
+
+4. last_name as None
+>>> try:
+... 	name("John", None)
+... except Exception as e:
+... 	print(e)
+last_name must be a string
+
+5. first_name as int
 >>> try:
 ... 	name(1, "Doe")
 ... except Exception as e:
 ... 	print(e)
 first_name must be a string
+
+6. last_name as int
 >>> try:
 ... 	name("John", 2)
 ... except Exception as e:
