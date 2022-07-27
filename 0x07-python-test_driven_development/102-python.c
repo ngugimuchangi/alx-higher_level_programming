@@ -1,33 +1,34 @@
 #include <Python.h>
-#include <stdio.h>
-#include <string.h>
+#include <object.h>
+#include <unicodeobject.h>
 
 /**
  * print_python_string - prints Python strings
  * @p: Python Object
  * Return: void
  */
+
 void print_python_string(PyObject *p)
 {
-	PyObject *str, *repr;
-	char *text;
+	const char *type = NULL;
+	Py_ssize_t len = 0;
+	wchar_t *str = NULL;
 
 	printf("[.] string object info\n");
-
-	if (strcmp(p->ob_type->tp_name, "str"))
+	if (!PyUnicode_Check(p))
 	{
 		printf("  [ERROR] Invalid String Object\n");
 		return;
 	}
 
 	if (PyUnicode_IS_COMPACT_ASCII(p))
-		printf("  type: compact ascii\n");
+		type = "compact ascii";
 	else
-		printf("  type: compact unicode object\n");
+		type = "compact unicode object";
 
-	repr = PyObject_Repr(p);
-	str = PyUnicode_AsEncodedString(p, "utf-8", "~E~");
-	text = PyBytes_AsString(str);
-	printf("  length: %ld\n", PyUnicode_GET_SIZE(p));
-	printf("  str = %s\n", text);
+	str = PyUnicode_AsWideCharString(p, &len);
+
+	printf("  type: %s\n", type);
+	printf("  length: %ld\n", len);
+	printf("  value: %ls\n", str);
 }
