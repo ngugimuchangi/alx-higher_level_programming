@@ -24,11 +24,16 @@ Traceback (most recent call last):
 TypeError: add_integer() missing 1 required positional argument: 'a'
 
 Check for normal situations (ints and whole number floats)
+1. a and b passed as integers
 >>> add(1, 2)
 3
->>> add(1, 2.0)
+
+2. b passed as a float
+>>> add(1, 2.1)
 3
->>> add(1.0, 2)
+
+3. a passed as a float
+>>> add(1.6, 2)
 3
 
 Check for when one argument is present, that is 'a'
@@ -36,26 +41,33 @@ Check for when one argument is present, that is 'a'
 99
 
 Check for err situations: unwanted data types
+1. a passed as None
+>>> try:
+...	add(None)
+... except Exception as e:
+...	print(e)
+...
+a must be an integer
+
+2. b passed as None
+>>> try:
+...	add(1, None)
+... except Exception as e:
+...	print(e)
+...
+b must be an integer
+
+3. a passed as a string
 >>> try:
 ...	add('hello', 2)
 ... except Exception as e:
 ...	print(e)
 ...
 a must be an integer
+
+4. b passed as a string
 >>> try:
 ...	add(1, 'hello')
-... except Exception as e:
-...	print(e)
-...
-b must be an integer
->>> try:
-...	add(1.1, 2)
-... except Exception as e:
-...	print(e)
-...
-a must be an integer
->>> try:
-...	add(1, 2.2)
 ... except Exception as e:
 ...	print(e)
 ...
