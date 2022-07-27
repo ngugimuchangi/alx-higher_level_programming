@@ -40,7 +40,7 @@ Check for when one argument is present, that is 'a'
 >>> add(1)
 99
 
-Check for err situations: unwanted data types
+Check for error scenarios: unwanted data types
 1. a passed as None
 >>> try:
 ...	add(None)
