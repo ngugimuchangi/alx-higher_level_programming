@@ -4,8 +4,9 @@
 
 /**
  * print_python_string - prints Python strings
- * @p: Python Object
- * Return: void
+ * @p: pointer to Python Object
+ *
+ * Return: nothing
  */
 
 void print_python_string(PyObject *p)
