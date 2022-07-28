@@ -1,10 +1,18 @@
 """
 Interactive test for text_indentation function
 
-Import module
->>> text_indentation = __import__('5-text_indentation').text_indentation
+Check module's docstring
+>>> mod = __import__('5-text_indentation').__doc__
+>>> len(mod) > 1
+True
 
-Multiple delimiters scenario
+Import function to test and check docstring
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+>>> len(text_indentation.__doc__) > 1
+True
+
+Checks for normal scenarios
+1. Multiple delimeters
 >>> text_indentation("Hello. My name is Morpheus: \
 ... What is your name?")
 Hello.
@@ -14,6 +22,7 @@ My name is Morpheus:
 What is your name?
 <BLANKLINE>
 
+2. No delimeter at the end
 >>> text_indentation("Hello. My name is Morpheus: \
 ... What is your name? Welcome to the matrix")
 Hello.
@@ -24,11 +33,11 @@ What is your name?
 <BLANKLINE>
 Welcome to the matrix
 
-No delimeter scenario
+3. No delimeter check
 >>> text_indentation("Hello! My name is Morpheus")
 Hello! My name is Morpheus
 
-Leading spaces scenarios
+4. Leading and lagging whitespaces check with no delimeter at the end
 >>> text_indentation("    Hello.     My name is Morpheus: \
 ... What is your name?     Welcome to the matrix     ")
 Hello.
@@ -39,6 +48,7 @@ What is your name?
 <BLANKLINE>
 Welcome to the matrix
 
+5. Leading and lagging whitespaces check with delimeter at the end
 >>> text_indentation("    Hello.     My name is Morpheus   : \
 ... What is your name    ?   ")
 Hello.
@@ -48,13 +58,15 @@ My name is Morpheus   :
 What is your name    ?
 <BLANKLINE>
 
-None string value scenario(TypeError)
+Check error scenarios
+1. Pass list as argument(TypeError)
 >>> try:
 ... 	text_indentation(["hello"])
 ... except Exception as e:
 ... 	print(e)
 text must be a string
 
+2. Pass tuple as argument
 >>> try:
 ... 	text_indentation(("hello", "world"))
 ... except Exception as e:

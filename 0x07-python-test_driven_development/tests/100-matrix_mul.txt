@@ -1,105 +1,123 @@
 """
 Interactive test for matrix multiplication module
 
-Import module function
->>> matrix_mul = __import__("100-matrix_mul").matrix_mul
-
-Check module docstring
->>> m = __import__("100-matrix_mul").__doc__
->>> len(m) > 1
+Check module's docstring
+>>> mod = __import__('100-matrix_mul').__doc__
+>>> len(mod) > 1
 True
 
-Check function docstring
->>> f = __import__("100-matrix_mul").matrix_mul.__doc__
->>> len(f) > 1
+Import module function and check docstring
+>>> matrix_mul = __import__('100-matrix_mul').matrix_mul
+>>> len(matrix_mul.__doc__) > 1
 True
 
-No arguments scenario
->>> matrix_mul()
-Traceback (most recent call last):
-...
-TypeError: matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
+Check normal use case scenarios
+1. Matrix with ints only
+>>> matrix_mul([[1, 2], [3, 4]], [[1, 2, 3], [4, 5, 6]])
+[[9, 12, 15], [19, 26, 33]]
 
-One argument scenario
->>> matrix_mul([[1, 2], [3, 4]])
-Traceback (most recent call last):
-...
-TypeError: matrix_mul() missing 1 required positional argument: 'm_b'
+2. Matrix with floats only
+>>> matrix_mul([[1.5, 2.5], [3.5, 4.5]], [[1.5, 2.5, 3.5], [4.5, 6.5, 7.5]])
+[[13.5, 20.0, 24.0], [25.5, 38.0, 46.0]]
 
-Too many arguments scenario
->>> matrix_mul([[1, 2], [3, 4]], [[5, 6], [7, 8]], [[9, 10], [11, 12]])
-Traceback (most recent call last):
-...
-TypeError: matrix_mul() takes 2 positional arguments but 3 were given
-
-Expected use case with ints and floats
+3. Matrix with ints and floats
 >>> matrix_mul([[1, 2], [3, 4]], [[1.5, 2.5, 3.5], [4.5, 6.5, 7.5]])
 [[10.5, 15.5, 18.5], [22.5, 33.5, 40.5]]
 
-Passing m_a as None
->>> matrix_mul(None, [[1, 2], [2, 1]])
+Check error scenarios
+1. Pass no arguments
+>>> matrix_mul()
 Traceback (most recent call last):
-...
-TypeError: m_a must be a list
+  File "<stdin>", line 1, in <module>
+TypeError: matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
 
-Passing m_b as None
->>> matrix_mul([[1, 2], [2, 1]], None)
+2. Pass few argument
+>>> matrix_mul([[1, 2], [3, 4]])
 Traceback (most recent call last):
-...
-TypeError: m_b must be a list
+  File "<stdin>", line 1, in <module>
+TypeError: matrix_mul() missing 1 required positional argument: 'm_b'
 
-Passing empty m_a
->>> matrix_mul([], [[1, 2], [2, 1]])
+3. Pass to many arguments scenario
+>>> matrix_mul([[1, 2], [3, 4]], [[5, 6], [7, 8]], [[9, 10], [11, 12]])
 Traceback (most recent call last):
-...
-ValueError: m_a can't be empty
+  File "<stdin>", line 1, in <module>
+TypeError: matrix_mul() takes 2 positional arguments but 3 were given
 
-Passing m_a with empty rows
->>> matrix_mul([[], []], [[1, 2], [2, 1]])
-Traceback (most recent call last):
-...
-ValueError: m_a can't be empty
+4. Pass m_a as None
+>>> try:
+... 	matrix_mul(None, [[1, 2], [2, 1]])
+... except Exception as e:
+... 	print(e)
+m_a must be a list
 
-Passing empty m_b
->>> matrix_mul([[1, 2], [2, 1]], [])
-Traceback (most recent call last):
-...
-ValueError: m_b can't be empty
+5. Pass m_b as None
+>>> try:
+... 	matrix_mul([[1, 2], [2, 1]], None)
+... except Exception as e:
+...	print(e)
+m_b must be a list
 
-Passing m_b with empty rows
->>> matrix_mul([[1, 2], [2, 1]], [[]])
-Traceback (most recent call last):
-...
-ValueError: m_b can't be empty
+6. Passing empty m_a
+>>> try:
+...	matrix_mul([], [[1, 2], [2, 1]])
+... except Exception as e:
+...	print(e)
+m_a can't be empty
 
-Uneven m_a
->>> matrix_mul([[1, 2], [1, 2, 3]], [[1, 2], [2, 1]])
-Traceback (most recent call last):
-...
-TypeError: each row of m_a must be of the same size
+7. Passing m_a with empty rows
+>>> try:
+...	matrix_mul([[], []], [[1, 2], [2, 1]])
+... except Exception as e:
+... 	print(e)
+m_a can't be empty
 
-Uneven m_b
->>> matrix_mul([[1, 2], [2, 1]], [[1, 2], [1, 2, 3]])
-Traceback (most recent call last):
-...
-TypeError: each row of m_b must be of the same size
+8. Passing empty m_b
+>>> try:
+...	matrix_mul([[1, 2], [2, 1]], [])
+... except Exception as e:
+...	print(e)
+m_b can't be empty
+
+9. Passing m_b with empty rows
+>>> try:
+...	matrix_mul([[1, 2], [2, 1]], [[]])
+... except Exception as e:
+... 	print(e)
+m_b can't be empty
+
+10. Uneven m_a
+>>> try:
+...	matrix_mul([[1, 2], [1, 2, 3]], [[1, 2], [2, 1]])
+... except Exception as e:
+...	print(e)
+each row of m_a must be of the same size
+
+11. Uneven m_b
+>>> try:
+...	matrix_mul([[1, 2], [2, 1]], [[1, 2], [1, 2, 3]])
+... except Exception as e:
+...	print(e)
+each row of m_b must be of the same size
 
 Unexpected data types (string) in list in m_a
->>> matrix_mul([[1, "Friends"], [2, 1]], [[1, 2], [2, 1]])
-Traceback (most recent call last):
-...
-TypeError: m_a should contain only integers or floats
+>>> try:
+...	matrix_mul([[1, "Friends"], [2, 1]], [[1, 2], [2, 1]])
+... except Exception as e:
+...	print(e)
+m_a should contain only integers or floats
 
-Unxexpected data types (string) in list in m_b
->>> matrix_mul([[1, 2], [2, 1]], [[1, "Friends"], [2, 1]])
-Traceback (most recent call last):
-...
-TypeError: m_b should contain only integers or floats
+12. Unxexpected data types (string) in list in m_b
+>>> try:
+... 	matrix_mul([[1, 2], [2, 1]], [[1, "Friends"], [2, 1]])
+... except Exception as e:
+... 	print(e)
+m_b should contain only integers or floats
 
-Mismatching matrices
->>> matrix_mul([[1, 1, 1], [1, 1, 1]], [[1, 1], [1, 1,]])
-Traceback (most recent call last):
-...
-ValueError: m_a and m_b can't be multiplied
+13. Mismatching matrices
+>>> try:
+...	matrix_mul([[1, 1, 1], [1, 1, 1]], [[1, 1], [1, 1,]])
+... except Exception as e:
+...	print(e)
+m_a and m_b can't be multiplied
 >>>
 """
