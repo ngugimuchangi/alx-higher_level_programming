@@ -20,7 +20,7 @@ def check_matrix(matrix, matrix_name=""):
         raise TypeError(f"{matrix_name} must be a list")
     if any(type(i) is not list for i in matrix):
         raise TypeError(f"{matrix_name} must be a list of lists")
-    if len(matrix) == 0 or any(len(i) == 0 for i in matrix):
+    if len(matrix) == 0 or all(len(i) == 0 for i in matrix):
         raise ValueError(f"{matrix_name} can't be empty")
     if any(type(i) not in [int, float] for row in matrix for i in row):
         raise TypeError(f"{matrix_name} should contain only" +
