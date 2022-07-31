@@ -99,21 +99,35 @@ each row of m_a must be of the same size
 ...	print(e)
 each row of m_b must be of the same size
 
-Unexpected data types (string) in list in m_a
+12. Unexpected data types (string) in list in m_a
 >>> try:
 ...	matrix_mul([[1, "Friends"], [2, 1]], [[1, 2], [2, 1]])
 ... except Exception as e:
 ...	print(e)
 m_a should contain only integers or floats
 
-12. Unxexpected data types (string) in list in m_b
+13. m_a not a list of lists
+>>> try:
+...	matrix_mul([1, 2], [[1, 2], [2, 1]])
+... except Exception as e:
+...	print(e)
+m_a must be a list of lists
+
+14. m_b not a list of lists
+>>> try:
+...	matrix_mul([[1, 2], [2, 1]], [1, 2])
+... except Exception as e:
+...	print(e)
+m_b must be a list of lists
+
+15. Unxexpected data types (string) in list in m_b
 >>> try:
 ... 	matrix_mul([[1, 2], [2, 1]], [[1, "Friends"], [2, 1]])
 ... except Exception as e:
 ... 	print(e)
 m_b should contain only integers or floats
 
-13. Mismatching matrices
+16. Mismatching matrices
 >>> try:
 ...	matrix_mul([[1, 1, 1], [1, 1, 1]], [[1, 1], [1, 1,]])
 ... except Exception as e:
