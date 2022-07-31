@@ -48,6 +48,14 @@ Check for normal situations (ints and floats)
 >>> add(-1, -3)
 -4
 
+7. positive infinity result
+>>> add(float('inf'))
+89
+
+8. negative infinit result
+>>> add(-float('inf'))
+89
+
 Check for when one argument is present, that is 'a'
 >>> add(1)
 99
