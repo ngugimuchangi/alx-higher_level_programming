@@ -48,15 +48,7 @@ Check for normal situations (ints and floats)
 >>> add(-1, -3)
 -4
 
-7. positive infinity result
->>> add(float('inf'))
-89
-
-8. negative infinit result
->>> add(-float('inf'))
-89
-
-Check for when one argument is present, that is 'a'
+7. Check for when one argument is present, that is 'a'
 >>> add(1)
 99
 
@@ -92,5 +84,29 @@ a must be an integer
 ...	print(e)
 ...
 b must be an integer
+
+5. passing NaN value (Value Error)
+>>> try:
+...	add(float("nan"))
+... except Exception as e:
+...	print(e)
+...
+cannot convert float NaN to integer
+
+6. passing positive infinity (Overflow Error)
+>>> try:
+...	add(float("inf"))
+... except Exception as e:
+...	print(e)
+...
+cannot convert float infinity to integer
+
+7. passing negative infinity (Overflow Error)
+>>> try:
+...	add(float("-inf"))
+... except Exception as e:
+...	print(e)
+...
+cannot convert float infinity to integer
 >>>
 """
