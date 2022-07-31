@@ -26,6 +26,19 @@ Check for normal scenarios
 ...	print(e)
 [[6.0, 12.0], [18.0, 24.0]]
 
+3. Division by infinity
+>>> try:
+... 	neo([[3,6], [9, 12]], float("inf"))
+... except Exception as e:
+...	print(e)
+[[0.0, 0.0], [0.0, 0.0]]
+
+4. Division by nan
+>>> try:
+... 	neo([[3, 6], [9, 12]], float("nan"))
+... except Exception as e:
+...	print(e)
+[[nan, nan], [nan, nan]]
 
 Check for error scenarios:
 1. Passing no arguments
