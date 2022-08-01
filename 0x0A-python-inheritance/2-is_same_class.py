@@ -9,5 +9,7 @@ def is_same_class(obj, a_class):
             obj: name of object
             a_class: class name to check for
     """
-    if a_class != "" and hasattr(a_class, '__class__'):
-        return isinstance(obj, a_class)
+    if obj.__class__ == a_class:
+        return True
+    else:
+        return False
