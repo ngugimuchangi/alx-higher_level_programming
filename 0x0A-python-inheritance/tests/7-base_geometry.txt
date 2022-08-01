@@ -1,0 +1,109 @@
+"""
+Interactive test for Geometry
+
+Check modules docstring
+>>> mod =  __import__('7-base_geometry').__doc__
+>>> len(mod) > 1
+True
+
+Import class
+>>> geo = __import__('7-base_geometry').BaseGeometry
+
+Check class docstring
+>>> cls_doc = geo.__doc__
+>>> len(cls_doc) > 1
+True
+
+Check methods docstring
+>>> area =  geo.area.__doc__
+>>> len(area) > 1
+True
+>>> int_val = geo.integer_validator.__doc__
+>>> len(int_val) > 1
+True
+
+Check area method
+1. One too many arguments
+>>> a = geo()
+>>> try:
+... 	a.area("hello")
+... except Exception as e:
+...	print("[{}] {}".format(e.__class__.__name__, e))
+...
+[TypeError] area() takes 1 positional argument but 2 were given
+
+2. Normal functioning
+>>> try:
+... 	a.area()
+... except Exception as e:
+...	print("[{}] {}".format(e.__class__.__name__, e))
+...
+[Exception] area() is not implemented
+
+Check integer_validator method
+1. Few argument
+>>> try:
+... 	a.integer_validator()
+... except Exception as e:
+...	print("[{}] {}".format(e.__class__.__name__, e))
+...
+[TypeError] integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+2. One too many arguments
+>>> try:
+... 	a.integer_validator("name", 1, 2)
+... except Exception as e:
+...	print("[{}] {}".format(e.__class__.__name__, e))
+...
+[TypeError] integer_validator() takes 3 positional arguments but 4 were given
+
+3. Right number of arguments
+>>> try:
+... 	a.integer_validator("age", 17)
+... except Exception as e:
+...	print("[{}] {}".format(e.__class__.__name__, e))
+...
+>>>
+
+4 Value and Type Error Scenarios
+a. pass value as string
+>>> try:
+... 	a.integer_validator("year", "2022")
+... except Exception as e:
+...	print("[{}] {}".format(e.__class__.__name__, e))
+...
+[TypeError] year must be an integer
+
+b. pass value as float
+>>> try:
+... 	a.integer_validator("year", 2022.2)
+... except Exception as e:
+...	print("[{}] {}".format(e.__class__.__name__, e))
+...
+[TypeError] year must be an integer
+
+c. pass value as None
+>>> try:
+... 	a.integer_validator("year", None)
+... except Exception as e:
+...	print("[{}] {}".format(e.__class__.__name__, e))
+...
+[TypeError] year must be an integer
+
+d. pass value less than zero
+>>> try:
+... 	a.integer_validator("age", -1)
+... except Exception as e:
+...	print("[{}] {}".format(e.__class__.__name__, e))
+...
+[ValueError] age must be greater than 0
+
+e. pass value as 0
+>>> try:
+... 	a.integer_validator("age", 0)
+... except Exception as e:
+...	print("[{}] {}".format(e.__class__.__name__, e))
+...
+[ValueError] age must be greater than 0
+>>>
+"""
