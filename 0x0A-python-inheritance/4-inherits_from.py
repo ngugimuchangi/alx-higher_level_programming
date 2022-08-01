@@ -15,5 +15,5 @@ def inherits_from(obj, a_class):
     """
     if hasattr(obj, '__class__') and a_class != "" \
             and hasattr(a_class, '__class__') and \
-            obj.__class__ != a_class:
-        return isinstance(obj, a_class)
+            type(obj) != a_class:
+        return issubclass(type(obj), a_class)
