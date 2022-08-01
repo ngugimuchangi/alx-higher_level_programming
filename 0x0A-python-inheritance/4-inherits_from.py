@@ -13,6 +13,5 @@ def inherits_from(obj, a_class):
             a_class: superclass to check
         Return: True if subclass, False if not
     """
-    if hasattr(obj, '__class__') and a_class != "" \
-            and hasattr(a_class, '__class__'):
-        return type(obj) != a_class and issubclass(type(obj), a_class)
+
+    return type(obj) != a_class and issubclass(type(obj), a_class)
