@@ -27,3 +27,7 @@
 > Inheritance
 > * Single and multiple inheritance
 > * Inheritance of magic methods
+### 0x0B. Python - Input/Output
+> Input/Output Operations
+> * Opening, reading and closing files
+> * JavaScript Object Notation (JSON)
