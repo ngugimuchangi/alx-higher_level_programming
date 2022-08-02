@@ -1,2 +1,3 @@
-main_files/
-__paycache__/
+__pycache__/
+main/
+text/
