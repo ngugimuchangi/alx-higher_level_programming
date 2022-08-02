@@ -14,8 +14,9 @@ class Square(base_class):
                 size(int): size of square
             Return: nothing
         """
-        super().__init__(size, size)
+        self.integer_validator("size", size)
         self.__size = size
+        super().__init__(size, size)
 
     def area(self):
         """ Area method to compute Square object's area
