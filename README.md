@@ -23,7 +23,7 @@
 > * More classes and objects
 ### 0x09. Python - Everything is object
 > Objects and values, Mutable vs immutable types, Aliasing, Clonning lists and Mutations
-## 0x0A. Python - Inheritance
+### 0x0A. Python - Inheritance
 > Inheritance
 > * Single and multiple inheritance
 > * Inheritance of magic methods
