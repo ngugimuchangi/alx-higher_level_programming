@@ -7,3 +7,6 @@
 4. Function the check if an object is an instance of a class that inherited (directly or indirectly) from a specified class
 5. Empty BaseGeometry class
 6. BaseGeometry with public instance method 'area'
+7. Add integer_validator method in BaseGeometry class and develop interactive doctests for the class methods
+8. Create a BaseGeometry subclass 'Rectangle'
+9. Implement area method and __str__ magic method for Rectangle class
