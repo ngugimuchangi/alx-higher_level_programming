@@ -16,4 +16,4 @@ class Square(base_class):
             Args: none
             Return: area of Square object
         """
-        return self.__size * self.__size
+        return self.__width * self.__height
