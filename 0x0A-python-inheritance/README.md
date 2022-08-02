@@ -10,3 +10,7 @@
 7. Add integer_validator method in BaseGeometry class and develop interactive doctests for the class methods
 8. Create a BaseGeometry subclass 'Rectangle'
 9. Implement area method and __str__ magic method for Rectangle class
+10. Create a Rectangle subclass 'Square' with area method
+11. Implement __str__ magic method
+12. Reverse implementation of equal and not equal magic methods
+13. Function to add new attributes to an object
