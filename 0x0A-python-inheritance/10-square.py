@@ -10,10 +10,4 @@ class Square(base_class):
 
     def __init__(self, size):
         base_class.__init__(self, size, size)
-
-    def area(self):
-        """ Area method to compute Square object's area
-            Args: none
-            Return: area of Square object
-        """
-        return self.__width * self.__height
+        self.__size = size
