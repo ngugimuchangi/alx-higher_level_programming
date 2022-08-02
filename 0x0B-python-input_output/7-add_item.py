@@ -13,10 +13,9 @@ def main():
     try:
         my_list = load('add_item.json')
     except Exception:
-        dump([], 'add_item.json')
-    else:
-        my_list += [sys.argv[i] for i in range(1, len(sys.argv))]
-        dump(my_list, 'add_item.json')
+        my_list = []
+    my_list += [sys.argv[i] for i in range(1, len(sys.argv))]
+    dump(my_list, 'add_item.json')
 
 
 main()
