@@ -30,7 +30,7 @@ def main():
         for line in sys.stdin:
             line_count += 1
             tokens = line.split()
-            if len(tokens) < 6:
+            if len(tokens) < 7:
                 continue
             if tokens[-2] in status_tally:
                 status_tally[tokens[-2]] += 1
