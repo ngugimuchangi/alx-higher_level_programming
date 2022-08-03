@@ -15,9 +15,9 @@ def status_print(status_tally, file_size):
         Return: nothing
     """
     print("File size: {:d}".format(file_size))
-    for key, value in sorted(status_tally.items()):
-        if value:
-            print("{:s}: {:d}".format(key, value))
+    for key in sorted(status_tally.keys()):
+        if status_tally[key]:
+            print("{:s}: {:d}".format(key, status_tally[key]))
 
 
 if __name__ == "__main__":
