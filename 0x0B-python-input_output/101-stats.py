@@ -43,7 +43,6 @@ if __name__ == "__main__":
                         continue
             if i % 10 == 0:
                 status_print(status_tally, file_size)
-            status_print(status_tally, file_size)
 
     except KeyboardInterrupt as e:
         status_print(status_tally, file_size)
