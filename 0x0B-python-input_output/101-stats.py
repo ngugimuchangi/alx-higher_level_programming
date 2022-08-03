@@ -18,8 +18,6 @@ def status_print(status_tally, file_size):
     for key in sorted(status_tally.keys()):
         if status_tally[key]:
             print("{:s}: {:d}".format(key, status_tally[key]))
-            status_tally[key] = 0
-            file_size = 0
 
 
 if __name__ == "__main__":
@@ -37,6 +35,7 @@ if __name__ == "__main__":
             file_size += int(tokens[-1])
             if i % 10 == 0:
                 status_print(status_tally, file_size)
+        status_print(status_tally, file_size)
     except KeyboardInterrupt as e:
         status_print(status_tally, file_size)
         print(e)
