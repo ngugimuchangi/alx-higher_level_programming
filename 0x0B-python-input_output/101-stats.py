@@ -19,6 +19,7 @@ def status_print(status_tally, file_size):
         if status_tally[key]:
             print("{:s}: {:d}".format(key, status_tally[key]))
             status_tally[key] = 0
+            file_size = 0
 
 
 if __name__ == "__main__":
