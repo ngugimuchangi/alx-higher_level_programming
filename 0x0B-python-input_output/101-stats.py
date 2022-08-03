@@ -30,6 +30,8 @@ if __name__ == "__main__":
         for line in sys.stdin:
             i += 1
             tokens = line.split()
+            if len(tokens) < 6:
+                continue
             if tokens[-2] in status_tally:
                 status_tally[tokens[-2]] += 1
             file_size += int(tokens[-1])
