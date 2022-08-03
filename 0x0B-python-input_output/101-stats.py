@@ -28,22 +28,13 @@ if __name__ == "__main__":
     i = 0
     try:
         for line in sys.stdin:
+            i += 1
             tokens = line.split()
-            if len(tokens) >= 2:
-                stay = i
-                if tokens[-2] in status_tally:
-                    status_tally[tokens[-2]] += 1
-                    i += 1
-                try:
-                    file_size += int(tokens[-1])
-                    if stay == i:
-                        i += 1
-                except Exception:
-                    if stay == i:
-                        continue
+            if tokens[-2] in status_tally:
+                status_tally[tokens[-2]] += 1
+            file_size += int(tokens[-1])
             if i % 10 == 0:
                 status_print(status_tally, file_size)
-
     except KeyboardInterrupt as e:
         status_print(status_tally, file_size)
         print(e)
