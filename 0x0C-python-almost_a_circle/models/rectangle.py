@@ -21,7 +21,7 @@ class Rectangle(Base):
                 y (int): x coordinate
                 x (int): y coordinate
         """
-        Base.__init__(self, id)
+        super().__init__(id)
         self.width = width
         self.height = height
         self.x = x
@@ -108,7 +108,7 @@ class Rectangle(Base):
             Args: none
             Return: area of rectangle instance
         """
-        return self.__width * self.__height
+        return self.width * self.height
 
     def display(self):
         """ Display method - displays rectangle instance using #
@@ -118,8 +118,8 @@ class Rectangle(Base):
         for i in range(self.__y):
             print()
         for i in range(self.__height):
-            print(" ".join(["" for j in range(self.__x + 1)]), end="")
-            print("#".join(["" for k in range(self.__width + 1)]))
+            print(" ".join(["" for j in range(self.x + 1)]), end="")
+            print("#".join(["" for k in range(self.width + 1)]))
 
     def __str__(self):
         """ String magic method
@@ -127,4 +127,46 @@ class Rectangle(Base):
             Return: nothing
         """
         return "[Rectangle] ({}) {:d}/{:d} - {:d}/{:d}".format(
-                self.id, self.__x, self.__y, self.__width, self.__height)
+                self.id, self.x, self.y, self.width, self.height)
+
+    def update(self, *args, **kwargs):
+        """ Attribute update method
+            Args:
+                args: non-keyword arguments
+                kwargs: keyword arguments
+            Return: nothing
+        """
+        if len(args) > 0:
+            for i in range(len(args)):
+                if i == 0:
+                    self.id = args[i]
+                elif i == 1:
+                    self.width = args[i]
+                elif i == 2:
+                    self.height = args[i]
+                elif i == 3:
+                    self.x = args[i]
+                elif i == 4:
+                    self.y = args[i]
+                else:
+                    break
+        else:
+            if 'id' in kwargs:
+                self.id = kwargs['id']
+            if 'width' in kwargs:
+                self.width = kwargs['width']
+            if 'height' in kwargs:
+                self.height = kwargs['height']
+            if 'x' in kwargs:
+                self.x = kwargs['x']
+            if 'y' in kwargs:
+                self.y = kwargs['y']
+
+    def to_dictionary(self):
+        """ Dictionary method
+            Args: none
+            Return: dictionary of rectangle instance
+        """
+        my_dict = {'id': self.id, 'width': self.width, 'height': self.height,
+                   'x': self.x, 'y': self.y}
+        return my_dict
