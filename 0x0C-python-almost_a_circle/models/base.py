@@ -2,6 +2,7 @@
 """ Base class module
 """
 import json
+import os
 
 
 class Base:
@@ -44,20 +45,25 @@ class Base:
 
     @classmethod
     def save_to_file(cls, list_objs):
-        """ Class method that coverts instance to json object and saves it to
-            a file
+        """ Class method that coverts instance dictionaray to json object
+            and saves it to a file
             Args:
                 list_objs (Base): base class instance
             Return: nothing
         """
-        for i in list_objs:
-            if type(i) is Base:
-                my_dict = i.__dict__
-            else:
-                my_dict = [i.to_dictionary()]
-            with open(f"{i.__class__.__name__}.json", 'w+', encoding='UTF8') \
-                    as f:
-                line = f.read()
-                if line:
-                    my_dict += json.loads(line)
-                f.write(cls.to_json_string(my_dict))
+        if type(list_objs) is None:
+            with open(f"None.json", 'w', encoding='UTF8') as f:
+                json.dumps([], f)
+        if type(list_objs) is list:
+            for i in list_objs:
+                if isinstance(i, cls):
+                    my_dict = [i.to_dictionary()]
+                    with open(f"{i.__class__.__name__}.json",
+                              'a+', encoding='UTF8') as f:
+                        f.seek(0)
+                        line = f.read()
+                    with open(f"{i.__class__.__name__}.json",
+                              'w', encoding='UTF8') as f:
+                        if line:
+                            my_dict = json.loads(line) + my_dict
+                        f.write(cls.to_json_string(my_dict))
