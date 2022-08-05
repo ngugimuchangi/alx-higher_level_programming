@@ -38,7 +38,7 @@ class Base:
             Return: nothing
         """
         if type(list_dictionaries) is None:
-            return "[]"
+            return json.dumps([])
         if type(list_dictionaries) is list:
             return json.dumps([i for i in list_dictionaries
                               if type(i) is dict])
@@ -99,7 +99,5 @@ class Base:
             f.close
             if line != "":
                 my_list = cls.from_json_string(line)
-                list_instances = []
-                for i in my_list:
-                    list_instances.append(cls.create(**i))
+                list_instances = [cls.create(**i) for i in my_list]
                 return list_instances
