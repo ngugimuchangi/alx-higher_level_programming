@@ -2,7 +2,7 @@
 """ Base class module
 """
 import json
-import os
+import csv
 
 
 class Base:
@@ -48,7 +48,7 @@ class Base:
         """ Method that coverts instance dictionaray to json object
             and saves it to a file
             Args:
-                list_objs (Base): base class instance
+                list_objs (Base): instances that inherit from Base class
             Return: nothing
         """
         if type(list_objs) is None:
@@ -56,9 +56,11 @@ class Base:
                 f.write(cls.to_json_string([]))
         if type(list_objs) is list:
             my_dict = [i.to_dictionary() for i in list_objs
-                       if isinstance(i, cls)]
-            with open(f"{cls.__name__}.json", 'w', encoding='UTF8') as f:
-                f.write(cls.to_json_string(my_dict))
+                       if isinstance(i, cls) and hasattr(i, 'to_dictionary')]
+            if all(len(i) == len(my_dict[0]) and (len(i) == 4 or len(i) == 5)
+                    for i in my_dict):
+                with open(f"{cls.__name__}.json", 'w', encoding='UTF8') as f:
+                    f.write(cls.to_json_string(my_dict))
 
     @staticmethod
     def from_json_string(json_string):
@@ -90,14 +92,57 @@ class Base:
             Args: none
             Return: nothing
         """
+        list_instances = []
         try:
             f = open(f"{cls.__name__}.json", 'r', encoding='UTF8')
         except FileNotFoundError:
-            return []
+            return list_instances
         else:
             line = f.read()
-            f.close
-            if line != "":
+            f.close()
+            if line:
                 my_list = cls.from_json_string(line)
-                list_instances = [cls.create(**i) for i in my_list]
-                return list_instances
+                if type(my_list) is list:
+                    list_instances = [cls.create(**i) for i in my_list]
+        return list_instances
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """ Method for saving instances that inherit from
+            Base class in csv format
+            Args:
+                list_objs (list): list of objects to convert to csv
+            Return: nothing
+        """
+        if type(list_objs) is list:
+            my_list = [i.to_dictionary() for i in list_objs
+                       if isinstance(i, cls) and hasattr(i, 'to_dictionary')]
+            if all(len(i) == len(my_list[0]) and (len(i) == 4 or len(i) == 5)
+                    for i in my_list):
+                with open(f"{cls.__name__}.csv", 'w', encoding='UTF8') as f:
+                    if len(my_list[0]) == 4:
+                        headers = ['id', 'size', 'x', 'y']
+                    else:
+                        headers = ['id', 'width', 'height', 'x', 'y']
+                    writer = csv.DictWriter(f, fieldnames=headers)
+                    writer.writeheader()
+                    writer.writerows(my_list)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """ Method for creating new instances from csv files
+            Args: none
+            Return: list of instances
+        """
+        list_instances = []
+        try:
+            f = open(f"{cls.__name__}.csv", 'r', encoding='UTF8')
+        except FileNotFoundError:
+            return list_instances
+        else:
+            reader = csv.DictReader(f)
+            my_list = [row for row in reader]
+            my_list = [{i: int(row[i]) for i in row.keys()} for row in my_list]
+            list_instances = [cls.create(**i) for i in my_list
+                              if len(i) == 4 or len(i) == 6]
+        return list_instances
