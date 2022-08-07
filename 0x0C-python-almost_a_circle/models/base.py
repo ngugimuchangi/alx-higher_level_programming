@@ -3,6 +3,7 @@
 """
 import json
 import csv
+import turtle
 
 
 class Base:
@@ -146,3 +147,41 @@ class Base:
             list_instances = [cls.create(**i) for i in my_list
                               if len(i) == 4 or len(i) == 6]
         return list_instances
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """ Method for drawing instances of rectangles and squares
+            Args:
+                list_rectangles (list): list of rectangle instances
+                list_squares (list): list of square instances
+            Return: nothing
+        """
+        marker = turtle.Turtle()
+        marker.getscreen().bgcolor("#994444")
+        marker.color("black")
+        marker.speed(1)
+        if type(list_rectangles) is list:
+            my_rectangles = [i.to_dictionary() for i in list_rectangles
+                             if hasattr(i, 'to_dictionary')]
+            if all(len(i) == 5 for i in my_rectangles):
+                for i in my_rectangles:
+                    marker.penup()
+                    marker.goto((i['x'], i['y']))
+                    marker.pendown()
+                    for j in range(2):
+                        marker.forward(i['width'])
+                        marker.left(90)
+                        marker.forward(i['height'])
+                        marker.left(90)
+        if type(list_squares) is list:
+            my_squares = [i.to_dictionary() for i in list_squares
+                          if hasattr(i, 'to_dictionary')]
+            if all(len(i) == 4 for i in my_squares):
+                for i in my_squares:
+                    marker.penup()
+                    marker.goto((i['x'], i['y']))
+                    marker.pendown()
+                    for j in range(4):
+                        marker.forward(i['size'])
+                        marker.left(90)
+        turtle.done()
