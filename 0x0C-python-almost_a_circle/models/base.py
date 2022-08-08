@@ -144,7 +144,7 @@ class Base:
         except FileNotFoundError:
             return list_instances
         else:
-            reader = csv.DictReader(f, restkey='extra')
+            reader = csv.DictReader(f)
             my_list = [row for row in reader]
             my_list = [{i: int(row[i]) if row[i].isdigit() else row[i]
                         for i in row} for row in my_list]
