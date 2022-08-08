@@ -38,7 +38,7 @@ class Base:
                 list_dictionaries (list): a list of dictionaries
             Return: nothing
         """
-        if type(list_dictionaries) is None:
+        if list_dictionaries is None:
             return json.dumps([])
         if type(list_dictionaries) is list:
             return json.dumps([i for i in list_dictionaries

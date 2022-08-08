@@ -154,6 +154,8 @@ class TestTriangle(unittest.TestCase):
     def test_update_validation(self):
         """ Test for validation during when update values
         """
+        pass
+
     def tearDown(self):
         """ Clean up action at the end of the tests
         """
