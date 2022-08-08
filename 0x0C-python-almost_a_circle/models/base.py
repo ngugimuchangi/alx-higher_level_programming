@@ -148,7 +148,6 @@ class Base:
             my_list = [row for row in reader]
             my_list = [{i: int(row[i]) if row[i].isdigit() else row[i]
                         for i in row} for row in my_list]
-            print(my_list)
             list_instances = [cls.create(**i) for i in my_list]
         return list_instances
 
