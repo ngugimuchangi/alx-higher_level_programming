@@ -83,10 +83,12 @@ class Base:
                                      keyword arguments
             Return: new class
         """
-        if hasattr(cls, 'to_dictionary') and type(dictionary) is dict:
+        if cls.__name__ == 'Rectangle':
             new = cls(1, 2)
-            new.update(**dictionary)
-            return new
+        if cls.__name__ == 'Square':
+            new = cls(3)
+        new.update(**dictionary)
+        return new
 
     @classmethod
     def load_from_file(cls):
