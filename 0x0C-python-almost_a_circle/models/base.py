@@ -83,10 +83,10 @@ class Base:
                                      keyword arguments
             Return: new class
         """
-        if cls.__name___ == "Rectangle":
-            new = cls(1, 2)
-        if cls.__name__ == "Square":
+        if cls.__name___ == 'Base':
             new = cls(1)
+        else:
+            new = cls(1, 2)
         new.update(**dictionary)
         return new
 
