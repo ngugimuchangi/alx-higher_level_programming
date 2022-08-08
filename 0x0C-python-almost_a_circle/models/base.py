@@ -118,8 +118,8 @@ class Base:
                 list_objs (list): list of objects to convert to csv
             Return: nothing
         """
-        if cls.__name__ == "Rectangle" or cls.__name__ == "Square" and
-        type(list_objs) is list:
+        if (cls.__name__ == "Rectangle" or cls.__name__ == "Square") \
+                and type(list_objs) is list:
             my_list = [i.to_dictionary() for i in list_objs
                        if isinstance(i, cls) and hasattr(i, 'to_dictionary')]
             if all(len(i) == len(my_list[0]) and (len(i) == 4 or len(i) == 5)
