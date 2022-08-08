@@ -83,9 +83,10 @@ class Base:
                                      keyword arguments
             Return: new class
         """
-        new = cls(1, 2)
-        new.update(**dictionary)
-        return new
+        if type(dictionary) is dict:
+            new = cls(1, 2)
+            new.update(**dictionary)
+            return new
 
     @classmethod
     def load_from_file(cls):
