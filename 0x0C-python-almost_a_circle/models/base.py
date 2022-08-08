@@ -124,9 +124,9 @@ class Base:
             if all(len(i) == len(my_list[0]) and (len(i) == 4 or len(i) == 5)
                     for i in my_list):
                 with open(f"{cls.__name__}.csv", 'w', encoding='UTF8') as f:
-                    if len(my_list[0]) == 4:
+                    if cls.__name__ == 'Square':
                         headers = ['id', 'size', 'x', 'y']
-                    else:
+                    if cls.__name__ == 'Rectangle':
                         headers = ['id', 'width', 'height', 'x', 'y']
                     writer = csv.DictWriter(f, fieldnames=headers)
                     writer.writeheader()
@@ -146,8 +146,20 @@ class Base:
         else:
             reader = csv.DictReader(f)
             my_list = [row for row in reader]
-            my_list = [{i: int(row[i]) for i in row.keys()} for row in my_list]
-            list_instances = [cls.create(**i) for i in my_list
+            new_list = []
+            for row in my_list:
+                my_dict = {}
+                for i in row.keys():
+                    print(row[i])
+                    if row[i].isdigit():
+                        my_dict[i] = int(row[i])
+                    elif row[i] == "None":
+                        my_dict[i] = None
+                    else:
+                        my_dict[i] = row[i]
+                new_list.append(my_dict)
+            print(new_list)
+            list_instances = [cls.create(**i) for i in new_list
                               if len(i) == 4 or len(i) == 6]
         return list_instances
 
