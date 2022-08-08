@@ -87,8 +87,9 @@ class Base:
             new = cls(1, 2)
         else:
             new = cls()
-        new.update(**dictionary)
-        return new
+        if type(dictionary) is dict:
+            new.update(**dictionary)
+            return new
 
     @classmethod
     def load_from_file(cls):
