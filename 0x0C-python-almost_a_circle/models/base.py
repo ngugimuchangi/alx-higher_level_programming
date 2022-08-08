@@ -83,10 +83,12 @@ class Base:
                                      keyword arguments
             Return: new class
         """
-        if type(dictionary) is dict and hasattr(cls, 'to_dictionary'):
+        if cls.__name___ == "Rectangle":
             new = cls(1, 2)
-            new.update(**dictionary)
-            return new
+        if cls.__name__ == "Square":
+            new = cls(1)
+        new.update(**dictionary)
+        return new
 
     @classmethod
     def load_from_file(cls):
@@ -116,7 +118,8 @@ class Base:
                 list_objs (list): list of objects to convert to csv
             Return: nothing
         """
-        if type(list_objs) is list:
+        if cls.__name__ == "Rectangle" or cls.__name__ == "Square" and
+        type(list_objs) is list:
             my_list = [i.to_dictionary() for i in list_objs
                        if isinstance(i, cls) and hasattr(i, 'to_dictionary')]
             if all(len(i) == len(my_list[0]) and (len(i) == 4 or len(i) == 5)
