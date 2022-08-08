@@ -29,13 +29,13 @@ class TestBase(unittest.TestCase):
         self.assertTrue(self.base0._Base__nb_objects ==
                         self.base3._Base__nb_objects)
         self.assertFalse(hasattr(self.base0, '__nb_objects'))
-        self.assertEqual(self.base0._Base__nb_objects, 2)
+        self.assertEqual(self.base0._Base__nb_objects, 6)
 
     def test_id(self):
         """ Test object ids and uniqueness
         """
-        self.assertEqual(self.base0.id, 1)
-        self.assertEqual(self.base1.id, 2)
+        self.assertEqual(self.base0.id, 3)
+        self.assertEqual(self.base1.id, 4)
         self.assertEqual(self.base2.id,  1)
         self.assertEqual(self.base3.id,  4)
         self.assertFalse(self.base0 is self.base2)

@@ -135,19 +135,21 @@ class TestTriangle(unittest.TestCase):
     def test_str(self):
         """ Test magic method __str__
         """
-        self.assertEqual(str(self.r0), "")
-        self.assertEqual(str(self.r2), "")
+        self.assertEqual(str(self.r0), "[Rectangle] (9) 2/1 - 2/3")
+        self.assertEqual(str(self.r2), "[Rectangle] (3) 2/2 - 1/3")
 
     def test_update_with_args(self):
         """ Test for update method with non-keyword
             arguments
         """
         self.r0.update(1, 5, 4, 3, 5) 
-        self.assertEqual(str(self.r0), "")
-        self.r1.update(1, 5, 4, 3, 5) 
-        self.assertEqual(str(self.r0), "")
+        self.assertEqual(str(self.r0), "[Rectangle] (1) 3/5 - 5/4")
+        self.r1.update(9, 12, 7, 0, 4) 
+        self.assertEqual(str(self.r1), "[Rectangle] (9) 0/4 - 12/7")
 
     def test_update_with_kwargs(self):
+        """
+        """
         pass
 
 
