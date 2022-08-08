@@ -83,13 +83,10 @@ class Base:
                                      keyword arguments
             Return: new class
         """
-        if hasattr(cls, 'to_dictionary'):
+        if hasattr(cls, 'to_dictionary') and type(dictionary) is dict:
             new = cls(1, 2)
-        else:
-            new = cls()
-        if type(dictionary) is dict:
             new.update(**dictionary)
-        return new
+            return new
 
     @classmethod
     def load_from_file(cls):
