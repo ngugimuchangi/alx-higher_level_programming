@@ -52,7 +52,7 @@ class Base:
                 list_objs (Base): instances that inherit from Base class
             Return: nothing
         """
-        if type(list_objs) is None:
+        if list_objs is None:
             with open(f"{cls.__name__}.json", 'w', encoding='UTF8') as f:
                 f.write(cls.to_json_string([]))
         if type(list_objs) is list:
@@ -70,7 +70,7 @@ class Base:
                 json_string(str): string representing a list of dictionary
             Return: object respresented as json string
         """
-        if type(json_string) is None or json_string == "":
+        if json_string is None or json_string == "":
             return []
         if type(json_string) is str:
             return json.loads(json_string)
