@@ -144,22 +144,12 @@ class Base:
         except FileNotFoundError:
             return list_instances
         else:
-            reader = csv.DictReader(f)
+            reader = csv.DictReader(f, restkey='extra')
             my_list = [row for row in reader]
-            new_list = []
-            for row in my_list:
-                my_dict = {}
-                for i in row.keys():
-                    print(row[i])
-                    if row[i].isdigit():
-                        my_dict[i] = int(row[i])
-                    elif row[i] == "None":
-                        my_dict[i] = None
-                    else:
-                        my_dict[i] = row[i]
-                new_list.append(my_dict)
-            print(new_list)
-            list_instances = [cls.create(**i) for i in new_list
+            my_list = [{i: int(row[i]) if row[i].isdigit() else row[i]
+                        for i in row} for row in my_list]
+            print(my_list)
+            list_instances = [cls.create(**i) for i in my_list
                               if len(i) == 4 or len(i) == 6]
         return list_instances
 
