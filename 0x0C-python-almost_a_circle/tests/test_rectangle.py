@@ -135,7 +135,7 @@ class TestTriangle(unittest.TestCase):
     def test_str(self):
         """ Test magic method __str__
         """
-        self.assertEqual(str(self.r0), "[Rectangle] (9) 2/1 - 2/3")
+        self.assertEqual(str(self.r0), "[Rectangle] (15) 2/1 - 2/3")
         self.assertEqual(str(self.r2), "[Rectangle] (3) 2/2 - 1/3")
 
     def test_update_with_args(self):
