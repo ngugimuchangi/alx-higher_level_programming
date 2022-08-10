@@ -84,9 +84,9 @@ class Base:
             Return: new class
         """
         if cls.__name__ == 'Rectangle':
-            new = cls(1, 2, 3, 4, 5)
+            new = cls(1, 2)
         if cls.__name__ == 'Square':
-            new = cls(1, 2, 3, 4)
+            new = cls(1)
         new.update(**dictionary)
         return new
 
