@@ -314,8 +314,6 @@ class TestBase(unittest.TestCase):
         s1 = Square(4, 3, 2, 1)
 
         self.assertEqual(Rectangle.load_from_file_csv(), [])
-        self.assertEqual(Square.load_from_file_csv(), [])
-
         Rectangle.save_to_file_csv([r0, r1])
         obj_list = Rectangle.load_from_file_csv()
         self.assertTrue(type(obj_list is list))
@@ -325,6 +323,7 @@ class TestBase(unittest.TestCase):
         self.assertFalse(r0 is obj_list[0])
         self.assertFalse(r1 is obj_list[1])
 
+        self.assertEqual(Square.load_from_file_csv(), [])
         Square.save_to_file_csv([s0, s1])
         obj_list = Square.load_from_file_csv()
         self.assertTrue(type(obj_list is list))

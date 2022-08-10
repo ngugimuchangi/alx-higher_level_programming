@@ -142,6 +142,9 @@ class TestSqauare(unittest.TestCase):
         s0.update()
         self.assertEqual(str(s0), "[Square] (4) 2/1 - 2")
 
+        s0.update(2)
+        self.assertEqual(str(s0), "[Square] (2) 2/1 - 2")
+
         s0.update(2, 6)
         self.assertEqual(str(s0), "[Square] (2) 2/1 - 6")
 
