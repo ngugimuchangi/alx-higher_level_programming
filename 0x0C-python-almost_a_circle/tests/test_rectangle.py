@@ -51,7 +51,7 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual("width must be an integer", str(e.exception))
 
         with self.assertRaises(TypeError) as e:
-            r0 = Rectangle("hello", 2, 0, 0, 1)
+            r0 = Rectangle("1", 2, 0, 0, 1)
         self.assertEqual("width must be an integer", str(e.exception))
 
         with self.assertRaises(TypeError) as e:
@@ -139,14 +139,27 @@ class TestRectangle(unittest.TestCase):
         """ Test for output of display function
         """
         r0 = Rectangle(2, 3, 2, 1, 4)
-        r1 = Rectangle(3, 4, 0, 0, 3)
+        r1 = Rectangle(2, 3, 2, 0, 3)
+        r2 = Rectangle(2, 3, 0, 1, 3)
+        r3 = Rectangle(3, 4, 0, 0, 3)
         r_capture = io.StringIO()
         sys.stdout = r_capture
         r0.display()
         self.assertEqual(r_capture.getvalue(), "\n  ##\n  ##\n  ##\n")
+
         r_capture.truncate(0)
         r_capture.seek(0)
         r1.display()
+        self.assertEqual(r_capture.getvalue(), "  ##\n  ##\n  ##\n")
+
+        r_capture.truncate(0)
+        r_capture.seek(0)
+        r2.display()
+        self.assertEqual(r_capture.getvalue(), "\n##\n##\n##\n")
+
+        r_capture.truncate(0)
+        r_capture.seek(0)
+        r3.display()
         self.assertEqual(r_capture.getvalue(), "###\n###\n###\n###\n")
 
     def test_str(self):
@@ -170,8 +183,17 @@ class TestRectangle(unittest.TestCase):
         r0.update(9, 12, 7, 0, 4)
         self.assertEqual(str(r0), "[Rectangle] (9) 0/4 - 12/7")
 
-        r0.update(2, 6)
-        self.assertEqual(str(r0), "[Rectangle] (2) 0/4 - 6/7")
+        r0.update(2)
+        self.assertEqual(str(r0), "[Rectangle] (2) 0/4 - 12/7")
+
+        r0.update(3, 6)
+        self.assertEqual(str(r0), "[Rectangle] (3) 0/4 - 6/7")
+
+        r0.update(4, 7, 6)
+        self.assertEqual(str(r0), "[Rectangle] (4) 0/4 - 7/6")
+
+        r0.update(2, 6, 7, 3)
+        self.assertEqual(str(r0), "[Rectangle] (2) 3/4 - 6/7")
 
         r0.update(1, 9, 3, 4, 1, 5, 7)
         self.assertEqual(str(r0), "[Rectangle] (1) 4/1 - 9/3")
@@ -183,7 +205,10 @@ class TestRectangle(unittest.TestCase):
         random_dict = {'width': 9, 'x': 0, 'height': 19, 'id': 10, 'y': 5}
         long_dict = {'width': 7, 'x': 3, 'height': 9, 'id': 4,
                      'y': 1, 'unknown': 0}
-        short_dict = {'width': 3, 'x': 7}
+        short_dict0 = {'id': 3}
+        short_dict1 = {'id': 4, 'width': 10}
+        short_dict2 = {'id': 3, 'width': 12, 'height': 7}
+        short_dict3 = {'id': 4, 'width': 7, 'height': 12, 'x': 5}
 
         r0 = Rectangle(2, 3, 2, 1, 4)
         self.assertEqual(str(r0), "[Rectangle] (4) 2/1 - 2/3")
@@ -200,8 +225,17 @@ class TestRectangle(unittest.TestCase):
         r0.update(**long_dict)
         self.assertEqual(str(r0), "[Rectangle] (4) 3/1 - 7/9")
 
-        r0.update(**short_dict)
-        self.assertEqual(str(r0), "[Rectangle] (4) 7/1 - 3/9")
+        r0.update(**short_dict0)
+        self.assertEqual(str(r0), "[Rectangle] (3) 3/1 - 7/9")
+
+        r0.update(**short_dict1)
+        self.assertEqual(str(r0), "[Rectangle] (4) 3/1 - 10/9")
+
+        r0.update(**short_dict2)
+        self.assertEqual(str(r0), "[Rectangle] (3) 3/1 - 12/7")
+
+        r0.update(**short_dict3)
+        self.assertEqual(str(r0), "[Rectangle] (4) 5/1 - 7/12")
 
     def test_args_and_kwargs(self):
         """ Test when args and kwargs are both present

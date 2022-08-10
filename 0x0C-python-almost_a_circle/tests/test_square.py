@@ -17,7 +17,7 @@ class TestSqauare(unittest.TestCase):
         Base._Base__nb_objects = 0
 
     def test_square_doc_strings(self):
-        """ Check base class documentation
+        """ Check class and methods documentation
         """
         self.assertTrue(len(Square.__doc__) > 20)
         self.assertTrue(len(Square.__init__.__doc__) > 20)
@@ -44,25 +44,24 @@ class TestSqauare(unittest.TestCase):
     def test_size_validation(self):
         """ Test for size value validation
         """
-        s0 = Square(1, 2, 3, 4)
         with self.assertRaises(TypeError) as e:
-            s0.size = None
+            s0 = Square(None, 2, 3, 4)
         self.assertEqual("width must be an integer", str(e.exception))
 
         with self.assertRaises(TypeError) as e:
-            s0.size = "hello"
+            s0 = Square("1", 2, 3, 4)
         self.assertEqual("width must be an integer", str(e.exception))
 
         with self.assertRaises(TypeError) as e:
-            s0.size = 1.2
+            s0 = Square(1.2, 2, 3, 4)
         self.assertEqual("width must be an integer", str(e.exception))
 
         with self.assertRaises(ValueError) as e:
-            s0.size = 0
+            s0 = Square(0, 1, 2, 3)
         self.assertEqual("width must be > 0", str(e.exception))
 
         with self.assertRaises(ValueError) as e:
-            s0.size = -1
+            s0 = Square(-1, 2, 3, 4)
         self.assertEqual("width must be > 0", str(e.exception))
 
     def test_x_validation(self):
@@ -143,11 +142,14 @@ class TestSqauare(unittest.TestCase):
         s0.update()
         self.assertEqual(str(s0), "[Square] (4) 2/1 - 2")
 
+        s0.update(2, 6)
+        self.assertEqual(str(s0), "[Square] (2) 2/1 - 6")
+
+        s0.update(3, 4, 6)
+        self.assertEqual(str(s0), "[Square] (3) 6/1 - 4")
+
         s0.update(9, 12, 7, 0)
         self.assertEqual(str(s0), "[Square] (9) 7/0 - 12")
-
-        s0.update(2, 6)
-        self.assertEqual(str(s0), "[Square] (2) 7/0 - 6")
 
         s0.update(1, 9, 3, 4, 5)
         self.assertEqual(str(s0), "[Square] (1) 3/4 - 9")
@@ -159,7 +161,9 @@ class TestSqauare(unittest.TestCase):
         random_dict = {'size':  9, 'x': 0, 'id': 10, 'y': 5}
         long_dict = {'width': 0, 'x': 3, 'height': 9,
                      'id': 4, 'y': 1, 'size': 7}
-        short_dict = {'id': 3, 'x': 7}
+        short_dict0 = {'id': 3}
+        short_dict1 = {'id': 5, 'size': 9}
+        short_dict2 = {'id': 7, 'size': 12, 'x': 1}
 
         s0 = Square(2, 3, 2, 1)
         self.assertEqual(str(s0), "[Square] (1) 3/2 - 2")
@@ -176,8 +180,14 @@ class TestSqauare(unittest.TestCase):
         s0.update(**long_dict)
         self.assertEqual(str(s0), "[Square] (4) 3/1 - 7")
 
-        s0.update(**short_dict)
-        self.assertEqual(str(s0), "[Square] (3) 7/1 - 7")
+        s0.update(**short_dict0)
+        self.assertEqual(str(s0), "[Square] (3) 3/1 - 7")
+
+        s0.update(**short_dict1)
+        self.assertEqual(str(s0), "[Square] (5) 3/1 - 9")
+
+        s0.update(**short_dict2)
+        self.assertEqual(str(s0), "[Square] (7) 1/1 - 12")
 
     def test_args_and_kwargs(self):
         """ Test when args and kwargs are both present

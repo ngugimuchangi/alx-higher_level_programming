@@ -66,7 +66,7 @@ class TestBase(unittest.TestCase):
         """ Test constructor arguments for self
         """
         base0 = Base()
-        base0 = Base(1)
+        base0 = Base(89)
 
         with self.assertRaises(TypeError):
             base0 = Base(1, 3)
@@ -86,17 +86,19 @@ class TestBase(unittest.TestCase):
         self.assertEqual(Base._Base__nb_objects, 3)
 
     def test_id(self):
-        """ Test object ids and uniqueness
+        """ Test automatic assigning of id
         """
         base0 = Base()
         base1 = Base()
         base2 = Base(2)
+        base3 = Base()
+        base4 = Base(12)
 
         self.assertEqual(base0.id, 1)
-        self.assertEqual(base1.id,  2)
+        self.assertEqual(base3.id,  3)
+        self.assertEqual(base4.id,  12)
         self.assertEqual(base1.id, base2.id)
-        self.assertFalse(base0 is base1)
-        self.assertFalse(base0 is base1)
+        self.assertFalse(base1 is base2)
 
     def test_to_json_string(self):
         """ Test to dictionary for rectangles
@@ -114,7 +116,6 @@ class TestBase(unittest.TestCase):
         self.assertEqual(Base.to_json_string("hello"), None)
         self.assertEqual(Base.to_json_string(None), "[]")
         self.assertEqual(Base.to_json_string([]), "[]")
-        self.assertEqual(Base.to_json_string([{'id': 12}]), '[{"id": 12}]')
         self.assertEqual(Base.to_json_string(dict_list0), dumps(dict_list0))
         self.assertEqual(Base.to_json_string(dict_list1), dumps(dict_list1))
         self.assertEqual(Base.to_json_string(dict_list2), dumps(dict_list2))
@@ -212,6 +213,16 @@ class TestBase(unittest.TestCase):
             json_str = f.read()
         self.assertFalse(json_str == exp_str2)
 
+        Square.save_to_file(None)
+        with open("Square.json", "r", encoding="UTF8") as f:
+            json_str = f.read()
+        self.assertTrue(json_str == "[]")
+
+        Square.save_to_file([])
+        with open("Square.json", "r", encoding="UTF8") as f:
+            json_str = f.read()
+        self.assertTrue(json_str == "[]")
+
         Square.save_to_file([s0, s1])
         with open("Square.json", "r", encoding="UTF8") as f:
             json_str = f.read()
@@ -249,6 +260,14 @@ class TestBase(unittest.TestCase):
         r1 = Rectangle(2, 4, 3, 4, 5)
         s0 = Square(1, 2, 3, 4)
         s1 = Square(4, 3, 2, 1)
+
+        with self.assertRaises(FileNotFoundError):
+            with open("Rectangle.json", "r", encoding="UTF8"):
+                pass
+
+        with self.assertRaises(FileNotFoundError):
+            with open("Square.json", "r", encoding="UTF8"):
+                pass
 
         Rectangle.save_to_file([r0, r1])
         obj_list = Rectangle.load_from_file()
