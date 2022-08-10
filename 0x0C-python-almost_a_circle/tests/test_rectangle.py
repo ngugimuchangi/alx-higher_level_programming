@@ -248,7 +248,7 @@ class TestRectangle(unittest.TestCase):
         r0.update(9, 12, 7, 0, 4, **kwargs)
         self.assertEqual(str(r0), "[Rectangle] (9) 0/4 - 12/7")
 
-    def test_dictionary(self):
+    def test_to_dictionary(self):
         """ Test to_dictionary method
         """
         r0 = Rectangle(2, 3, 2, 1, 4)

@@ -115,7 +115,6 @@ class TestBase(unittest.TestCase):
         self.assertEqual(Base.to_json_string("hello"), None)
         self.assertEqual(Base.to_json_string(None), "[]")
         self.assertEqual(Base.to_json_string([]), "[]")
-        self.assertEqual(Base.to_json_string([{'id': 12}]), '[{"id": 12}]')
         self.assertEqual(Base.to_json_string(dict_list0), dumps(dict_list0))
         self.assertEqual(Base.to_json_string(dict_list1), dumps(dict_list1))
         self.assertEqual(Base.to_json_string(dict_list2), dumps(dict_list2))
@@ -124,10 +123,6 @@ class TestBase(unittest.TestCase):
                          dumps(dict_list0))
         self.assertEqual(Square.to_json_string(dict_list1), dumps(dict_list1))
 
-        self.assertTrue(type(Base.to_json_string(dict_list0)) is str)
-        self.assertTrue(type(Rectangle.to_json_string(dict_list0)) is str)
-        self.assertTrue(type(Square.to_json_string(dict_list1)) is str)
-        
     def test_from_json_string(self):
         """ Test method that converts json string to python object
         """
@@ -135,8 +130,6 @@ class TestBase(unittest.TestCase):
         json_str = r0.to_json_string([r0.to_dictionary()])
         new_object = r0.from_json_string(json_str)
 
-        self.assertIsInstance(new_object, list)
-        self.assertIsInstance(new_object[0], dict)
         self.assertTrue(new_object == [r0.to_dictionary()])
         self.assertEqual(Base.from_json_string(None), [])
         self.assertEqual(Base.from_json_string("[]"), [])
@@ -156,6 +149,7 @@ class TestBase(unittest.TestCase):
         r3 = Rectangle.create(**{'id': 4, 'width': 4})
         r4 = Rectangle.create(**{'id': 4, 'width': 4, 'height': 3})
         r5 = Rectangle.create(**{'id': 4, 'width': 4, 'height': 3, 'x': 3})
+
         s1 = Square.create(**s_dict)
         s2 = Square.create(**{'id': 2})
         s3 = Square.create(**{'id': 2, 'size': 9})
@@ -266,13 +260,8 @@ class TestBase(unittest.TestCase):
         s0 = Square(1, 2, 3, 4)
         s1 = Square(4, 3, 2, 1)
 
-        with self.assertRaises(FileNotFoundError):
-            with open("Rectangle.json", "r", encoding="UTF8"):
-                pass
-
-        with self.assertRaises(FileNotFoundError):
-            with open("Square.json", "r", encoding="UTF8"):
-                pass
+        self.assertEqual(Rectangle.load_from_file(), [])
+        self.assertEqual(Square.load_from_file(), [])
 
         Rectangle.save_to_file([r0, r1])
         obj_list = Rectangle.load_from_file()
@@ -324,15 +313,8 @@ class TestBase(unittest.TestCase):
         s0 = Square(1, 2, 3, 4)
         s1 = Square(4, 3, 2, 1)
 
-        Rectangle.save_to_file_csv(None)
-        with self.assertRaises(FileNotFoundError):
-            with open("Rectangle.csv", "r", encoding="UTF8") as f:
-                pass
-
-        Square.save_to_file_csv(None)
-        with self.assertRaises(FileNotFoundError):
-            with open("Square.csv", "r", encoding="UTF8") as f:
-                pass
+        self.assertEqual(Rectangle.load_from_file_csv(), [])
+        self.assertEqual(Square.load_from_file_csv(), [])
 
         Rectangle.save_to_file_csv([r0, r1])
         obj_list = Rectangle.load_from_file_csv()
