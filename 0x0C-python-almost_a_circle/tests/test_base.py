@@ -61,22 +61,28 @@ class TestBase(unittest.TestCase):
     def test_nb_objects(self):
         """ Test private class attribute __nb_objects
         """
-        base0 = Base(2)
-        base1 = Base(3)
+        base0 = Base()
+        base1 = Base(2)
+        base3 = Base()
+        base4 = Base(5)
+        base5 = Base()
 
         self.assertTrue(base0._Base__nb_objects ==
-                        base1._Base__nb_objects)
+                        base5._Base__nb_objects)
         self.assertFalse(hasattr(base0, '__nb_objects'))
-        self.assertEqual(base0._Base__nb_objects, 2)
+        self.assertEqual(Base._Base__nb_objects, 3)
 
     def test_id(self):
         """ Test object ids and uniqueness
         """
         base0 = Base()
-        base1 = Base(2)
+        base1 = Base()
+        base2 = Base(2)
 
-        self.assertEqual(base0.id, 2)
+        self.assertEqual(base0.id, 1)
         self.assertEqual(base1.id,  2)
+        self.assertEqual(base1.id, base2.id)
+        self.assertFalse(base0 is base1)
         self.assertFalse(base0 is base1)
 
     def test_to_json_string(self):
@@ -92,13 +98,15 @@ class TestBase(unittest.TestCase):
         dict_list1 = [s0.to_dictionary(), s1.to_dictionary()]
         dict_list2 = [r1.to_dictionary(), s1.to_dictionary()]
 
-        self.assertIsNone(r0.to_json_string("hello"))
-        self.assertEqual(r0.to_json_string(None), "[]")
-        self.assertEqual(base0.to_json_string(dict_list0), dumps(dict_list0))
-        self.assertEqual(r0.to_json_string(dict_list0), dumps(dict_list0))
-        self.assertEqual(s0.to_json_string(dict_list0), dumps(dict_list0))
-        self.assertEqual(base0.to_json_string(dict_list1), dumps(dict_list1))
-        self.assertEqual(base0.to_json_string(dict_list2), dumps(dict_list2))
+        self.assertEqual(Base.to_json_string("hello"), None)
+        self.assertEqual(Base.to_json_string(None), "[]")
+        self.assertEqual(Base.to_json_string([]), "[]")
+        self.assertEqual(Base.to_json_string([{'id': 12}]), '[{"id": 12}]')
+        self.assertEqual(Base.to_json_string(dict_list0), dumps(dict_list0))
+        self.assertEqual(Base.to_json_string(dict_list1), dumps(dict_list1))
+        self.assertEqual(Base.to_json_string(dict_list2), dumps(dict_list2))
+        self.assertEqual(Rectangle.to_json_string(dict_list0), dumps(dict_list0))
+        self.assertEqual(Square.to_json_string(dict_list1), dumps(dict_list1))
 
     def test_from_json_string(self):
         """ Test method that converts json string to python object
@@ -110,7 +118,9 @@ class TestBase(unittest.TestCase):
         self.assertIsInstance(new_object, list)
         self.assertIsInstance(new_object[0], dict)
         self.assertTrue(new_object == [r0.to_dictionary()])
-        self.assertEqual(r0.from_json_string('1'), 1)
+        self.assertEqual(Base.from_json_string(None), [])
+        self.assertEqual(Base.from_json_string("[]"), [])
+        self.assertEqual(Base.from_json_string('1'), 1)
 
     def test_create(self):
         """ Test method for creating new rectangle and square instances
@@ -283,6 +293,9 @@ class TestBase(unittest.TestCase):
         self.assertTrue(str(s1) == str(obj_list[1]))
         self.assertFalse(s0 is obj_list[0])
         self.assertFalse(s1 is obj_list[1])
+
+    def tearDown(self):
+        Base._Base__nb_objects = 0
 
     @classmethod
     def tearDownClass(cls):
