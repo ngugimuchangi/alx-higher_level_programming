@@ -4,12 +4,17 @@
 import unittest
 import io
 import sys
+from models.base import Base
 from models.square import Square
 
 
 class TestSqauare(unittest.TestCase):
-    """ Tests for Rectangle class
+    """ Tests for Square class
     """
+    def tearDown(self):
+        """ Clean up action at the end of each test
+        """
+        Base._Base__nb_objects = 0
 
     def test_square_doc_strings(self):
         """ Check base class documentation
@@ -24,11 +29,17 @@ class TestSqauare(unittest.TestCase):
 
     def test_constructor_arguments(self):
         """ Test few and too many arguments
+            and right number of arguments
         """
+        s0 = Square(1)
+        s1 = Square(1, 2)
+        s2 = Square(1, 2, 3)
+        s3 = Square(1, 2, 3, 4)
+
         with self.assertRaises(TypeError):
-            s0 = Square()
+            s4 = Square()
         with self.assertRaises(TypeError):
-            s0 = Square(1, 2, 3, 4, 5)
+            s4 = Square(1, 2, 3, 4, 5)
 
     def test_size_validation(self):
         """ Test for size value validation
@@ -53,6 +64,44 @@ class TestSqauare(unittest.TestCase):
         with self.assertRaises(ValueError) as e:
             s0.size = -1
         self.assertEqual("width must be > 0", str(e.exception))
+
+    def test_x_validation(self):
+        """ Test for x value validation
+        """
+        with self.assertRaises(TypeError) as e:
+            s0 = Square(1, None, 0, 1)
+        self.assertEqual("x must be an integer", str(e.exception))
+
+        with self.assertRaises(TypeError) as e:
+            s0 = Square(1, "0", 0, 1)
+        self.assertEqual("x must be an integer", str(e.exception))
+
+        with self.assertRaises(TypeError) as e:
+            s0 = Square(1, 0.1, 0, 1)
+        self.assertEqual("x must be an integer", str(e.exception))
+
+        with self.assertRaises(ValueError) as e:
+            s0 = Square(1, -1, 0, 1)
+        self.assertEqual("x must be >= 0", str(e.exception))
+
+    def test_y_validation(self):
+        """ Test for x value validation
+        """
+        with self.assertRaises(TypeError) as e:
+            s0 = Square(1, 1, None, 1)
+        self.assertEqual("y must be an integer", str(e.exception))
+
+        with self.assertRaises(TypeError) as e:
+            s0 = Square(1, 0, "0", 1)
+        self.assertEqual("y must be an integer", str(e.exception))
+
+        with self.assertRaises(TypeError) as e:
+            s0 = Square(1, 0, 0.1, 1)
+        self.assertEqual("y must be an integer", str(e.exception))
+
+        with self.assertRaises(ValueError) as e:
+            s0 = Square(1, 0, -1, 1)
+        self.assertEqual("y must be >= 0", str(e.exception))
 
     def test_area(self):
         """ Test for area method

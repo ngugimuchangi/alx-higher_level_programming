@@ -4,12 +4,19 @@
 import unittest
 import io
 import sys
+from models.base import Base
 from models.rectangle import Rectangle
 
 
 class TestRectangle(unittest.TestCase):
     """ Tests for Rectangle class
     """
+
+    def tearDown(self):
+        """ Clean up action at the end of every test
+        """
+        Base._Base__nb_objects = 0
+
     def test_rectangle_doc_strings(self):
         """ Check base class documentation
         """
@@ -24,12 +31,17 @@ class TestRectangle(unittest.TestCase):
     def test_constructor_arguments(self):
         """ Test few and too many arguments
         """
+        r0 = Rectangle(1, 2)
+        r1 = Rectangle(1, 2, 3)
+        r2 = Rectangle(1, 2, 3, 4)
+        r4 = Rectangle(1, 2, 3, 4, 5)
+
         with self.assertRaises(TypeError):
-            r0 = Rectangle()
+            r5 = Rectangle()
         with self.assertRaises(TypeError):
-            r0 = Rectangle(1)
+            r5 = Rectangle(1)
         with self.assertRaises(TypeError):
-            r0 = Rectangle(1, 2, 3, 4, 5, 6)
+            r5 = Rectangle(1, 2, 3, 4, 5, 6)
 
     def test_width_validation(self):
         """ Test for width value validation
@@ -96,7 +108,7 @@ class TestRectangle(unittest.TestCase):
             r0 = Rectangle(1, 2, -1, 0, 1)
         self.assertEqual("x must be >= 0", str(e.exception))
 
-    def test_x_validation(self):
+    def test_y_validation(self):
         """ Test for x value validation
         """
         with self.assertRaises(TypeError) as e:

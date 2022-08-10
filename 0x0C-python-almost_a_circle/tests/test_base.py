@@ -15,6 +15,19 @@ from models.square import Square
 class TestBase(unittest.TestCase):
     """ Tests for Base class
     """
+    def tearDown(self):
+        """ Clean up action at the end of each test
+        """
+        Base._Base__nb_objects = 0
+
+    @classmethod
+    def tearDownClass(cls):
+        """ Clean up actions at the end of the class
+        """
+        test_files = ["Base.json", "Rectangle.json", "Rectangle.csv",
+                      "Square.json", "Square.csv"]
+        for i in test_files:
+            remove(i)
 
     def test_base_doc_strings(self):
         """ Check base class documentation
@@ -105,7 +118,8 @@ class TestBase(unittest.TestCase):
         self.assertEqual(Base.to_json_string(dict_list0), dumps(dict_list0))
         self.assertEqual(Base.to_json_string(dict_list1), dumps(dict_list1))
         self.assertEqual(Base.to_json_string(dict_list2), dumps(dict_list2))
-        self.assertEqual(Rectangle.to_json_string(dict_list0), dumps(dict_list0))
+        self.assertEqual(Rectangle.to_json_string(dict_list0),
+                         dumps(dict_list0))
         self.assertEqual(Square.to_json_string(dict_list1), dumps(dict_list1))
 
     def test_from_json_string(self):
@@ -132,7 +146,14 @@ class TestBase(unittest.TestCase):
         s_dict = s0.to_dictionary()
 
         r1 = Rectangle.create(**r_dict)
+        r2 = Rectangle.create(**{'id': 4})
+        r3 = Rectangle.create(**{'id': 4, 'width': 4})
+        r4 = Rectangle.create(**{'id': 4, 'width': 4, 'height': 3})
+        r5 = Rectangle.create(**{'id': 4, 'width': 4, 'height': 3, 'x': 3})
         s1 = Square.create(**s_dict)
+        s2 = Square.create(**{'id': 2})
+        s3 = Square.create(**{'id': 2, 'size': 9})
+        s4 = Square.create(**{'id': 2, 'size': 9, 'x': 3})
 
         with self.assertRaises(NameError):
             Base.create(**r0_dict)
@@ -140,8 +161,16 @@ class TestBase(unittest.TestCase):
         with self.assertRaises(NameError):
             Base.create(**s0_dict)
 
-        self.assertTrue(str(r0) == str(r1))
-        self.assertTrue(str(s0) == str(s1))
+        self.assertTrue(str(r1) == str(r0))
+        self.assertTrue(str(r2) == "[Rectangle] (4) 0/0 - 1/2")
+        self.assertTrue(str(r3) == "[Rectangle] (4) 0/0 - 4/2")
+        self.assertTrue(str(r4) == "[Rectangle] (4) 0/0 - 4/3")
+        self.assertTrue(str(r5) == "[Rectangle] (4) 3/0 - 4/3")
+
+        self.assertTrue(str(s1) == str(s0))
+        self.assertTrue(str(s2) == "[Square] (2) 0/0 - 1")
+        self.assertTrue(str(s3) == "[Square] (2) 0/0 - 9")
+        self.assertTrue(str(s4) == "[Square] (2) 3/0 - 9")
 
         self.assertFalse(r1 is r0)
         self.assertFalse(s1 is s0)
@@ -159,6 +188,11 @@ class TestBase(unittest.TestCase):
         exp_str2 = dumps([r0.to_dictionary(), s1.to_dictionary()])
 
         Rectangle.save_to_file(None)
+        with open("Rectangle.json", "r", encoding="UTF8") as f:
+            json_str = f.read()
+        self.assertTrue(json_str == "[]")
+
+        Rectangle.save_to_file([])
         with open("Rectangle.json", "r", encoding="UTF8") as f:
             json_str = f.read()
         self.assertTrue(json_str == "[]")
@@ -293,15 +327,3 @@ class TestBase(unittest.TestCase):
         self.assertTrue(str(s1) == str(obj_list[1]))
         self.assertFalse(s0 is obj_list[0])
         self.assertFalse(s1 is obj_list[1])
-
-    def tearDown(self):
-        Base._Base__nb_objects = 0
-
-    @classmethod
-    def tearDownClass(cls):
-        """ Clean up actions at the end of the class
-        """
-        test_files = ["Base.json", "Rectangle.json", "Rectangle.csv",
-                      "Square.json", "Square.csv"]
-        for i in test_files:
-            remove(i)

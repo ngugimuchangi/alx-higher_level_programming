@@ -6,11 +6,15 @@ from models.base import Base
 
 class Rectangle(Base):
     """ Base subclass 'Rectangle'
+
         Private attributes:
             width (int)
             height (int)
             x (int)
             y (int)
+        Instance methods:
+            __init__, area, display, __str__,
+            update, to_dictionary
     """
 
     def __init__(self, width, height, x=0, y=0, id=None):

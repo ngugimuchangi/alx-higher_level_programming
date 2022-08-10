@@ -8,14 +8,22 @@ import turtle
 
 class Base:
     """ Base class
+
         Private attributes:
             __nb_objects
 
         Public attributes:
             id
 
-        Methods:
-            __init__, to_json_string, save_to_file
+        Instance methods:
+            __init__
+
+        Static methods:
+            to_json_string, from_json_string, draw
+
+        Class methods:
+            create, save_to_file, load_from_file,
+            save_to_file_csv, load_from_file_csv
     """
     __nb_objects = 0
 
