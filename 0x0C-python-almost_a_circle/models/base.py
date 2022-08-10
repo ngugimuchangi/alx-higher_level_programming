@@ -84,9 +84,9 @@ class Base:
             Return: new class
         """
         if cls.__name__ == 'Rectangle':
-            new = cls(1, 2)
+            new = cls(1, 2, 3, 4, 5)
         if cls.__name__ == 'Square':
-            new = cls(3)
+            new = cls(1, 2, 3, 4)
         new.update(**dictionary)
         return new
 
@@ -146,6 +146,7 @@ class Base:
         else:
             reader = csv.DictReader(f)
             my_list = [row for row in reader]
+            f.close()
             my_list = [{i: int(row[i]) if row[i].isdigit() else row[i]
                         for i in row} for row in my_list]
             list_instances = [cls.create(**i) for i in my_list]

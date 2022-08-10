@@ -4,14 +4,23 @@
 import unittest
 import io
 import sys
-from models.base import Base
-from models.rectangle import Rectangle
 from models.square import Square
 
 
-class TestRectangle(unittest.TestCase):
+class TestSqauare(unittest.TestCase):
     """ Tests for Rectangle class
     """
+
+    def test_square_doc_strings(self):
+        """ Check base class documentation
+        """
+        self.assertTrue(len(Square.__doc__) > 20)
+        self.assertTrue(len(Square.__init__.__doc__) > 20)
+        self.assertTrue(len(Square.__str__.__doc__) > 20)
+        self.assertTrue(len(Square.area.__doc__) > 20)
+        self.assertTrue(len(Square.display.__doc__) > 20)
+        self.assertTrue(len(Square.update.__doc__) > 20)
+        self.assertTrue(len(Square.to_dictionary.__doc__) > 20)
 
     def test_constructor_arguments(self):
         """ Test few and too many arguments
