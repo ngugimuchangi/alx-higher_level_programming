@@ -103,7 +103,6 @@ class TestBase(unittest.TestCase):
     def test_to_json_string(self):
         """ Test to dictionary for rectangles
         """
-        base0 = Base(2)
         r0 = Rectangle(1, 2, 3, 4, 5)
         r1 = Rectangle(1, 3, 4, 7, 9)
         s0 = Square(1, 2, 3, 4)
@@ -119,10 +118,15 @@ class TestBase(unittest.TestCase):
         self.assertEqual(Base.to_json_string(dict_list0), dumps(dict_list0))
         self.assertEqual(Base.to_json_string(dict_list1), dumps(dict_list1))
         self.assertEqual(Base.to_json_string(dict_list2), dumps(dict_list2))
+
         self.assertEqual(Rectangle.to_json_string(dict_list0),
                          dumps(dict_list0))
         self.assertEqual(Square.to_json_string(dict_list1), dumps(dict_list1))
 
+        self.assertTrue(type(Base.to_json_string(dict_list0)) is str)
+        self.assertTrue(type(Rectangle.to_json_string(dict_list0)) is str)
+        self.assertTrue(type(Square.to_json_string(dict_list1)) is str)
+        
     def test_from_json_string(self):
         """ Test method that converts json string to python object
         """
