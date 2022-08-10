@@ -115,6 +115,7 @@ class TestBase(unittest.TestCase):
         self.assertEqual(Base.to_json_string("hello"), None)
         self.assertEqual(Base.to_json_string(None), "[]")
         self.assertEqual(Base.to_json_string([]), "[]")
+        self.assertEqual(Base.to_json_string([{'id': 12}]), '[{"id": 12}]')
         self.assertEqual(Base.to_json_string(dict_list0), dumps(dict_list0))
         self.assertEqual(Base.to_json_string(dict_list1), dumps(dict_list1))
         self.assertEqual(Base.to_json_string(dict_list2), dumps(dict_list2))
