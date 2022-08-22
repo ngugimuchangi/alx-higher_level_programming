@@ -44,7 +44,7 @@ class Base:
         """ Method to convert dictionaries into json representation
             Args:
                 list_dictionaries (list): a list of dictionaries
-            Return: nothing
+            Return: json string representation of the list of dictionaries
         """
         if list_dictionaries is None:
             return json.dumps([])
