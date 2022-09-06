@@ -31,3 +31,11 @@
 > Input/Output Operations
 > * Opening, reading and closing files
 > * JavaScript Object Notation (JSON)
+### 0x0C. Python - Almost a circle
+> * Unittesting
+> * JavaScript Object Notation (JSON)
+> * Dynamic and static polymorphism
+>	non-keyword arguments(args)
+	keyword arguments(kwargs) 
+### 0x0D. SQL - Introduction
+> * Database Operations
