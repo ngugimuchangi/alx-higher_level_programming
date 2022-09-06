@@ -35,8 +35,7 @@
 > * Unittesting
 > * JavaScript Object Notation (JSON)
 > * Dynamic and static polymorphism
-
->	non-keyword arguments(args)
->	keyword arguments(kwargs) 
+> 	- non-keyword arguments(args)
+> 	- keyword arguments(kwargs) 
 ### 0x0D. SQL - Introduction
 > * Database Operations
