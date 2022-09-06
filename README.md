@@ -3,7 +3,7 @@
 ### 0x00. Python - Hello, World
 &emsp;Introduction to Python
 ### 0x01-python-if_else_loops_functions
-Conditional loops and statements
+&emsp;Conditional loops and statements
 ### 0x02. Python - import & modules
 &emsp;Python modules and command line arguments
 ### 0x03. Python - Data Structures: Lists, Tuples
@@ -35,7 +35,7 @@ Conditional loops and statements
 	* Unittesting
 	* JavaScript Object Notation (JSON)
 	* Dynamic and static polymorphism
-		- non-keyword arguments(args)
-		- keyword arguments(kwargs) 
+	- non-keyword arguments(args)
+	- keyword arguments(kwargs) 
 ### 0x0D. SQL - Introduction
 > * Database Operations
