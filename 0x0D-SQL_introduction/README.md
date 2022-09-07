@@ -1,6 +1,7 @@
 # 0x0D. SQL - Introduction
 ## About
 Database introduction
+
 Structured Query Language Introduction
 * Data definition language (DDL)
 * Data manipulation language (DML)
