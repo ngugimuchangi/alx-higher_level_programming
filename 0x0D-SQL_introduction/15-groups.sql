@@ -1,0 +1,3 @@
+-- Count the number of occurrence of each score
+
+SELECT score, COUNT(score) AS number FROM second_table GROUP BY score;
