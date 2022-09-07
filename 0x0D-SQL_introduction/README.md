@@ -1,13 +1,12 @@
 # 0x0D. SQL - Introduction
 ## About
-Database introduction
-
-Structured Query Language Introduction
-* Data definition language (DDL)
-* Data manipulation language (DML)
-* SQL basic operations: `CREATE`, `ALTER`, `SELECT`, `INSERT`, `UPDATE`, `DELETE`
-* Subqueries
-* SQL functions
+* Database introduction
+* Structured Query Language Introduction
+	* Data definition language (DDL)
+	* Data manipulation language (DML)
+	* SQL basic operations: `CREATE`, `ALTER`, `SELECT`, `INSERT`, `UPDATE`, `DELETE`
+	* Subqueries
+	* SQL functions
 ### Tasks
 0. Script that lists all databases of your MySQL server.
 	* [0-list_databases.sql](0-list_databases.sql)
