@@ -23,7 +23,7 @@ Structured Query Language Introduction
 	- [3-list_tables.sql](3-list_tables.sql)
 4. Write a script that creates a table called first_table in the current database in your MySQL server.
 
-	* first_table description:
+* first_table description:
 	- id INT
 	- name VARCHAR(256)
 
