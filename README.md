@@ -38,4 +38,5 @@
 >	- non-keyword arguments(args)
 >	- keyword arguments(kwargs)
 ### 0x0D. SQL - Introduction
-> Database Operations
+> * Database introduction
+> * Structured Query Language Introduction
