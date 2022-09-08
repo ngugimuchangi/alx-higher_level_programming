@@ -1,4 +1,12 @@
 # ALX Higher Level Programming
+## About
+* Higher level programming languages
+	- Python
+	- Structured Query Language (SQL)
+	- JavaScript
+* Webpage structure and style languages
+	- Hypertext Markup Lanuguage (HTML)
+	- Cascading Style Sheets(CSS)
 ## Projects
 ### 0x00. Python - Hello, World
 > Introduction to Python
@@ -40,3 +48,5 @@
 ### 0x0D. SQL - Introduction
 > * Database introduction
 > * Structured Query Language Introduction
+### 0x0E. SQL - More queries
+> * More SQL Queries
