@@ -10,4 +10,4 @@ ON ts.id = tsg.show_id
 LEFT OUTER JOIN tv_genres tg
 ON tsg.genre_id = tg.id
 WHERE name = 'Comedy'
-ORDER BY title;
+ORDER BY title ASC;
