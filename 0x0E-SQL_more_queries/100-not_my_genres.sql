@@ -5,7 +5,7 @@
 
 SELECT name FROM tv_genres
 WHERE name NOT IN
-(SELECT DISTINCT name
+(SELECT name
 FROM tv_genres tg
 LEFT OUTER JOIN tv_show_genres tsg
 ON tg.id = tsg.genre_id
