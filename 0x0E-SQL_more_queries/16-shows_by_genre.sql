@@ -2,7 +2,6 @@
 -- Each record should display: tv_shows.title - tv_show_genres.genre_id
 -- Results must be sorted in ascending order by tv_shows.title and tv_show_genres.genre_id
 -- If  show doesn’t have a genre, display NULL
--- You can use only one SELECT statement
 
 SELECT title, name
 FROM tv_shows ts

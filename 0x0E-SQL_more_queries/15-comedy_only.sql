@@ -1,10 +1,10 @@
--- Script that uses the hbtn_0d_tvshows database to lists all genres of the show Dexter.
--- The tv_shows table contains only one record where title = Dexter (but the id can be different)
--- Each record should display: tv_genres.name
--- Results must be sorted in ascending order by the genre name
+-- Script that lists all Comedy shows in the database hbtn_0d_tvshows.
+-- The tv_genres table contains only one record where name = Comedy (but the id can be different)
+-- Each record should display: tv_shows.title
+-- Results must be sorted in ascending order by the show title
 
 SELECT title
-FROM tv_shows as ts
+FROM tv_shows ts
 LEFT OUTER JOIN tv_show_genres tsg
 ON ts.id = tsg.show_id
 LEFT OUTER JOIN tv_genres tg

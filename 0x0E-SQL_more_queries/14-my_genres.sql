@@ -4,7 +4,7 @@
 -- Results must be sorted in ascending order by the genre name
 
 SELECT name
-FROM tv_genres as tg
+FROM tv_genres tg
 LEFT OUTER JOIN tv_show_genres tsg
 ON tg.id = tsg.genre_id
 LEFT OUTER JOIN tv_shows ts
