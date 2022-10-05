@@ -4,10 +4,8 @@
 
 const args = process.argv.slice(2);
 
-if (args.length === 0) {
+if (args[0] === undefined) {
   console.log('No argument');
 } else {
-  for (const arg of args) {
-    console.log(arg);
-  }
+    console.log(args[0]);
 }
