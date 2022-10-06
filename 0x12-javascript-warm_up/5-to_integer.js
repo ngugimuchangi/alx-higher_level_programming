@@ -2,7 +2,7 @@
 
 // Script to convert strings into integers
 
-const args = process.argv.splice(2);
+const args = process.argv.slice(2);
 const len = args.length;
 
 if (len === 0 || isNaN(args[0])) {
