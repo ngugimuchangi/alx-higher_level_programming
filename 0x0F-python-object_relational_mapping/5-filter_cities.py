@@ -11,9 +11,9 @@ if __name__ == "__main__":
     conn = MySQLdb.connect(host='localhost', port=3306, user=user_name,
                            passwd=password, db=db_name, charset="utf8")
     cur = conn.cursor()
-    query = "SELECT cities.name FROM cities {} {}'{}' {}".format(
+    query = "SELECT cities.name FROM cities {} {} '{}' {}".format(
             "RIGHT JOIN states ON cities.state_id=states.id",
-            "WHERE states.name LIKE ",state,
+            "WHERE states.name LIKE", state,
             "ORDER BY cities.id")
     cur.execute(query)
     data = cur.fetchall()
