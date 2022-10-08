@@ -17,7 +17,6 @@ if __name__ == "__main__":
     cur.execute(query)
     data = cur.fetchall()
     for row in data:
-        row = str(row)
         print("{}".format(str(row).strip('()')), end=", "
               if data.index(row) != (len(data) - 1) else "\n")
     cur.close()
