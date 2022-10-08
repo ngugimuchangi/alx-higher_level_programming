@@ -11,11 +11,11 @@ if __name__ == "__main__":
     conn = MySQLdb.connect(host='localhost', port=3306, user=user_name,
                            passwd=password, db=db_name, charset="utf8")
     cur = conn.cursor()
-    query = "SELECT cities.name FROM cities {} {} {}".format(
+    query = "SELECT cities.name FROM cities {} {}'{}' {}".format(
             "JOIN states ON cities.state_id=states.id",
-            "WHERE states.name LIKE %s",
+            "WHERE states.name=", state,
             "ORDER BY cities.id ASC")
-    cur.execute(query, (state))
+    cur.execute(query)
     data = cur.fetchall()
     states = ", ".join(row[0] for row in data)
     print(states)
