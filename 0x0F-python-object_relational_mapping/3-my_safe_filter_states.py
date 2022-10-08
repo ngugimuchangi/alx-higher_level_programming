@@ -13,11 +13,10 @@ if __name__ == "__main__":
     conn = MySQLdb.connect(host='localhost', port=3306, user=user_name,
                            passwd=password, db=db_name, charset="utf8")
     cur = conn.cursor()
-    if ' ' not in search:
-        query = "SELECT * FROM states WHERE BINARY name='{}'ORDER BY id ASC"
-        cur.execute(query.format(search))
-        data = cur.fetchall()
-        for row in data:
-            print(row)
+    query = "SELECT * FROM states WHERE BINARY name LIKE '{}'ORDER BY id ASC"
+    cur.execute(query.format(search))
+    data = cur.fetchall()
+    for row in data:
+        print(row)
     cur.close()
     conn.close()
