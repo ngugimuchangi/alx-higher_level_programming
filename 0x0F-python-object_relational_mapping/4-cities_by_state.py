@@ -11,7 +11,7 @@ if __name__ == "__main__":
                            passwd=password, db=db_name, charset="utf8")
     cur = conn.cursor()
     query = "SELECT cities.*, states.name FROM cities {} {}".format(
-            "LEFT OUTER states ON cities.state_id=states.id",
+            "LEFT OUTER JOIN states ON cities.state_id=states.id",
             "ORDER BY cities.id ASC")
     cur.execute(query.format(search))
     data = cur.fetchall()
