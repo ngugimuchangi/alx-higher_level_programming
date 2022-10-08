@@ -14,7 +14,7 @@ if __name__ == "__main__":
     query = "SELECT cities.name FROM cities {} {} '{}' {}".format(
             "JOIN states ON cities.state_id=states.id",
             "WHERE states.name LIKE", state,
-            "ORDER BY cities.id")
+            "ORDER BY cities.id ASC")
     cur.execute(query)
     data = cur.fetchall()
     for row in data:
