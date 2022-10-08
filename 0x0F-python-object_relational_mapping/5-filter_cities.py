@@ -16,10 +16,8 @@ if __name__ == "__main__":
             "WHERE states.name=", state)
     cur.execute(query)
     data = cur.fetchall()
-    delimeter = ""
     for row in data:
-        print("{:s}{}".format(delimeter, row.strip('()')), end="")
-        delimeter = ", "
-    print()
+        print("{:s}{}".format(delimeter, row.strip('()')), end=", "
+              if data.index(row) != (len(data) - 1) else "\n")
     cur.close()
     conn.close()
