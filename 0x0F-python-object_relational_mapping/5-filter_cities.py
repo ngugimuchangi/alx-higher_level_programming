@@ -18,7 +18,7 @@ if __name__ == "__main__":
     data = cur.fetchall()
     delimeter = ""
     for row in data:
-        print("{:s} {}".format(delimeter, row.strip('()')), ends="")
+        print("{:s}{}".format(delimeter, row.strip('()')), ends="")
         delimeter = ", "
     print()
     cur.close()
