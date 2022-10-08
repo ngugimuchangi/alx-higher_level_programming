@@ -12,7 +12,7 @@ if __name__ == "__main__":
                            passwd=password, db=db_name, charset="utf8")
     cur = conn.cursor()
     query = "SELECT cities.name FROM cities {} {}'{}'".format(
-            "LEFT JOIN states ON cities.state_id=states.id",
+            "RIGHT JOIN states ON cities.state_id=states.id",
             "WHERE states.name=", state)
     cur.execute(query)
     data = cur.fetchall()
