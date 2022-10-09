@@ -1,2 +1,3 @@
-sql_files/
 __pycache__/
+py_files/
+sql_files/

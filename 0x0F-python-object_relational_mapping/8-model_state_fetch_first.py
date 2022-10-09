@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" Script that lists all State objects from the database hbtn_0e_6_usa
+""" Script that fetches the first State object from the database hbtn_0e_6_usa
 """
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -14,6 +14,6 @@ if __name__ == "__main__":
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     my_session = Session()
-    for state in my_session.query(State).order_by(State.id):
-        print("{}: {}".format(state.id, state.name))
+    state = my_session.query(State).first()
+    print("{}: {}".format(state.id, state.name))
     my_session.close()
