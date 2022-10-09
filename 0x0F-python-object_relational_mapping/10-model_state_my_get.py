@@ -9,13 +9,15 @@ from sys import argv
 
 
 if __name__ == "__main__":
-    username, password, db_name = argv[1:]
+    username, password, db_name, search = argv[1:]
     engine = create_engine("mysql+mysqldb://{}:{}@localhost/{}".format(
                            username, password, db_name))
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     my_session = Session()
-    for state in my_session.query(State).filter(
-            State.name.like('%a%')).order_by(State.id):
-        print("{}: {}".format(state.id, state.name))
+    state = my_session.query(State).filter(State.name == search).one_or_none()
+    if state is None:
+        print("Not found")
+    else:
+        print("{}".format(state.id))
     my_session.close()
