@@ -1,10 +1,8 @@
 #!/usr/bin/python3
 """ City table database representation
 """
+from model_state import Base, State
 from sqlalchemy import ForeignKey, Column, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
-
-Base = declarative_base()
 
 
 class City(Base):
