@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-""" Script to insert State and City objects into
-    the database hbtn_0e_100_usa
+""" Script to list all Cities the database
+    hbtn_0e_100_usa and their respective states
 """
 from relationship_state import Base, State
 from relationship_city import City
@@ -15,8 +15,6 @@ if __name__ == "__main__":
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     my_session = Session()
-    state = State(name="California")
-    state.cities = [City(name="San Francisco")]
-    my_session.add(state)
-    my_session.commit()
+    for city in my_session.query(City).order_by(City.id):
+        print("{}: {} -> {}".format(city.id, city.name, city.state.name))
     my_session.close()
