@@ -102,19 +102,19 @@
 		* class attribute `state_id` that represents a column of an integer, can’t be null and is a foreign key to states.id
 	* Use the module `SQLAlchemy`
 	* [model_city.py](model_city.py)
-Next, write a script `14-model_city_fetch_by_state.py` that prints all `City` objects from the database `hbtn_0e_14_usa`:
+
+Next, write a script [14-model_city_fetch_by_state.py](14-model_city_fetch_by_state.py) that prints all `City` objects from the database `hbtn_0e_14_usa`:
 	* Takes 3 arguments: `mysql username`, `mysql password` and `database name`
 	* Uses the module `SQLAlchemy`
 	* Connects to a MySQL server running on `localhost` at port `3306`
 	* Results are display as follows (`<state name>`: (`<city id>`) `<city name>`)
-	* [14-model_city_fetch_by_state.py](14-model_city_fetch_by_state.py)
-15. Improve the files `model_city.py` and `model_state.py`, and save them as `relationship_city.py` and `relationship_state.py`:
+15. Improve the files [model_city.py](model_city.py) and [model_state.py](model_state.py), and save them as [relationship_city.py](relationship_city.py) and [relationship_state.py](relationship_state.py):
 	* `City` class:
 		* No change
 	* State class:
 		* In addition to previous requirements, the class attribute `cities` must represent a relationship with the class `City`. If the `State` object is deleted, all linked `City` objects must be automatically deleted. Also, the reference from a `City` object to his `State` should be named `state`
 	* Use the module `SQLAlchemy`
-	* [relationship_city.py](relationship_city.py), [relationship_state.py](relationship_state.py)
+
 Write a script that creates the `State` “California” with the `City` “San Francisco” from the database `hbtn_0e_100_usa`: ([100-relationship_states_cities.py](100-relationship_states_cities.py))
 	* Takes 3 arguments: `mysql username`, `mysql password` and `database name`
 	* Uses the module `SQLAlchemy`
