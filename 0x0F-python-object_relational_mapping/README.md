@@ -114,12 +114,12 @@ Next, write a script [14-model_city_fetch_by_state.py](14-model_city_fetch_by_st
 	* State class:
 		* In addition to previous requirements, the class attribute `cities` must represent a relationship with the class `City`. If the `State` object is deleted, all linked `City` objects must be automatically deleted. Also, the reference from a `City` object to his `State` should be named `state`
 	* Use the module `SQLAlchemy`
+	* Write a script that creates the `State` “California” with the `City` “San Francisco” from the database `hbtn_0e_100_usa`: ([100-relationship_states_cities.py](100-relationship_states_cities.py))
+		* Takes 3 arguments: `mysql username`, `mysql password` and `database name`
+		* Uses the module `SQLAlchemy`
+		* Connects to a MySQL server running on `localhost` at port `3306`
+		* Uses `cities` relationship for all `State` objects
 
-Write a script that creates the `State` “California” with the `City` “San Francisco” from the database `hbtn_0e_100_usa`: ([100-relationship_states_cities.py](100-relationship_states_cities.py))
-	* Takes 3 arguments: `mysql username`, `mysql password` and `database name`
-	* Uses the module `SQLAlchemy`
-	* Connects to a MySQL server running on `localhost` at port `3306`
-	* Uses `cities` relationship for all `State` objects
 16. Script that lists all `State` objects, and corresponding `City` objects, contained in the database `hbtn_0e_101_usa`
 	* Takes 3 arguments: `mysql username`, `mysql password` and `database name`
 	* Uses the module `SQLAlchemy`
@@ -127,6 +127,7 @@ Write a script that creates the `State` “California” with the `City` “San 
 	* Uses `cities` relationship for all `State` objects
 	* Results are sorted in ascending order by `states.id` and `cities.id`
 	* [101-relationship_states_cities_list.py](101-relationship_states_cities_list.py)
+
 17. Script that lists all `City` objects from the database `hbtn_0e_101_usa`
 	* Takes 3 arguments: `mysql username`, `mysql password` and `database name`
 	* Uses the module `SQLAlchemy`
