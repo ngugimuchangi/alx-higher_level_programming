@@ -93,7 +93,7 @@
 	* Uses the module `SQLAlchemy`
 	* Connect to a MySQL server running on `localhost` at port `3306`
 	* [13-model_state_delete_a.py](13-model_state_delete_a.py)
-14. Python file that contains the class definition of a `City`.
+14. Python file [model_city.py](model_city.py) that contains the class definition of a `City`.
 	* `City` class:
 		* inherits from `Base` (imported from `model_state`)
 		* links to the MySQL table `cities`
@@ -101,8 +101,6 @@
 		* class attribute `name` that represents a column of a string of 128 characters and can’t be null
 		* class attribute `state_id` that represents a column of an integer, can’t be null and is a foreign key to states.id
 	* Use the module `SQLAlchemy`
-	* [model_city.py](model_city.py)
-
 	* Next, write a script [14-model_city_fetch_by_state.py](14-model_city_fetch_by_state.py) that prints all `City` objects from the database `hbtn_0e_14_usa`:
 		* Takes 3 arguments: `mysql username`, `mysql password` and `database name`
 		* Uses the module `SQLAlchemy`
