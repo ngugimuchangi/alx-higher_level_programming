@@ -103,11 +103,11 @@
 	* Use the module `SQLAlchemy`
 	* [model_city.py](model_city.py)
 
-Next, write a script [14-model_city_fetch_by_state.py](14-model_city_fetch_by_state.py) that prints all `City` objects from the database `hbtn_0e_14_usa`:
-	* Takes 3 arguments: `mysql username`, `mysql password` and `database name`
-	* Uses the module `SQLAlchemy`
-	* Connects to a MySQL server running on `localhost` at port `3306`
-	* Results are display as follows (`<state name>`: (`<city id>`) `<city name>`)
+	* Next, write a script [14-model_city_fetch_by_state.py](14-model_city_fetch_by_state.py) that prints all `City` objects from the database `hbtn_0e_14_usa`:
+		* Takes 3 arguments: `mysql username`, `mysql password` and `database name`
+		* Uses the module `SQLAlchemy`
+		* Connects to a MySQL server running on `localhost` at port `3306`
+		* Results are display as follows (`<state name>`: (`<city id>`) `<city name>`)
 15. Improve the files [model_city.py](model_city.py) and [model_state.py](model_state.py), and save them as [relationship_city.py](relationship_city.py) and [relationship_state.py](relationship_state.py):
 	* `City` class:
 		* No change
