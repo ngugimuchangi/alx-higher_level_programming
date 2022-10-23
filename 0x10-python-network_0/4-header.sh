@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 # Script that send adds a custom request header to a GET request
 
 if [ $# -gt 0 ]; then

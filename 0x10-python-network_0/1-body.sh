@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 # Script to send a GET request and display the response
 
 if [ $# -gt 0 ]; then

@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 # Script that sends a DELETE request to a server
 
 if [ $# -gt 0 ]; then

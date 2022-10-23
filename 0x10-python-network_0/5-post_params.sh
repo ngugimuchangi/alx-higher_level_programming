@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 # Script to send a POST request with specific data
 
 if [ $# -gt 0 ]; then
