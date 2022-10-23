@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 # Script send a request to a URL and displays the size of the body of the response
 
 if [ $# -gt 0 ]; then

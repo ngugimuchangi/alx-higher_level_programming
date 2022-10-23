@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 # Script that displays all HTTP methods a server will accept
 
 if [ $# -gt 0 ]; then
