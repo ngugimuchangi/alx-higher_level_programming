@@ -1,3 +1,3 @@
 #!/bin/bash
-# Script to send a GET request and display the response
-if curl -sI "$1" | grep -q 200; then curl -s "$1"; fi
+# Script to display response of GET request and fail silently
+curl -sf "$1"
