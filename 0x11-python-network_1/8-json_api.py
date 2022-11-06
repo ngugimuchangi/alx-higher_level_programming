@@ -6,10 +6,10 @@ from sys import argv
 
 
 if __name__ == "__main__":
-    url = argv[1]
+    url = "http://0.0.0.0:5000/search_user"
     key = ""
-    if len(argv) > 2:
-        key = argv[2]
+    if len(argv) > 1:
+        key = argv[1]
     data = {'q': key}
 
     search = post(url, data=data)
