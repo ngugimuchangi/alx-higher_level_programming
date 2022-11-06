@@ -9,4 +9,4 @@ if __name__ == "__main__":
     url, email = argv[1:3]
     data = {'email': email}
     req = post(url, data=data)
-    print(req.content)
+    print(req.content.decode())
