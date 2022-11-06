@@ -2,11 +2,11 @@
 """ Script to send a post request
 """
 from sys import argv
-from urllib.request import urlopen, Request
+from urllib.request import urlopen
 from urllib.parse import urlencode
 
 if __name__ == "__main__":
     url, email = argv[1:3]
-    data = urlencode({'email': email}).encode('utf8')
+    data = urlencode({'email': email}).encode('utf-8')
     with urlopen(url, data) as req:
-        print("Your email is: {}".format(req.read().decode('utf8')))
+        print(req.read().decode('utf-8'))
