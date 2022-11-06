@@ -8,4 +8,4 @@ if __name__ == "__main__":
         content = req.read()
         print("Body response:\n\t{}: {}\n\t{}: {}\n\t{}: {}".format(
             "- type", type(content), "- content", content, "- utf8 content",
-            req.msg))
+            content.decode('utf8')))
