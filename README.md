@@ -33,11 +33,11 @@
 * [0x06-python-classes](0x06-python-classes)
 ### 0x07. Python - Test-driven development
 * Test-driven Development in Python
-* 	* Unit Tests and Interactive Tests for Python modules
+	* Unit Tests and Interactive Tests for Python modules
 * [0x07-python-test_driven_development](0x07-python-test_driven_development)
 ### 0x08. Python - More Classes and Objects
 * Object Oriented Programming in Python
-* * More classes and objects
+	* More classes and objects
 * [0x08-python-more_classes](0x08-python-more_classes)
 ### 0x09. Python - Everything is object
 * Objects and values, Mutable vs immutable types, Aliasing, Clonning lists and Mutations
@@ -50,11 +50,11 @@
 ### 0x0B. Python - Input/Output
 * Input/Output Operations
 	* Opening, reading and closing files
-	* JavaScript Object Notation (JSON)
+	* JavaScript Object Notation (`JSON`)
 * [0x0B-python-input_output](0x0B-python-input_output)
 ### 0x0C. Python - Almost a circle
 * Unittesting
-* JavaScript Object Notation (JSON)
+* JavaScript Object Notation (`JSON`)
 * Dynamic and static polymorphism
 	- non-keyword arguments(args)
 	- keyword arguments(kwargs)
@@ -70,8 +70,8 @@
 * [0x0E-SQL_more_queries](0x0E-SQL_more_queries)
 ### 0x0F. Python - Object-relational mapping
 * Object relational mapping
-	* MsqlDb API
-	* Sqlalchemy
+	* `MsqlDb API`
+	* `Sqlalchemy`
 * [0x0F-python-object_relational_mappi](0x0F-python-object_relational_mappi)
 ### 0x10. Python - Network #0
 * HTTP protocol
