@@ -14,4 +14,4 @@ if __name__ == "__main__":
     if req.status_code == 200:
         results = req.json()
         for i in results:
-            print("{}: {}".format(i['sha'], i['author']['login']))
+            print("{}: {}".format(i['sha'], i['commit']['author']['name']))
