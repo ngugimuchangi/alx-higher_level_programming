@@ -50,11 +50,11 @@
 ### 0x0B. Python - Input/Output
 * Input/Output Operations
 	* Opening, reading and closing files
-	* JavaScript Object Notation (`JSON`)
+	* JavaScript Object Notation (JSON)
 * [0x0B-python-input_output](0x0B-python-input_output)
 ### 0x0C. Python - Almost a circle
 * Unittesting
-* JavaScript Object Notation (`JSON`)
+* JavaScript Object Notation (JSON)
 * Dynamic and static polymorphism
 	- non-keyword arguments(args)
 	- keyword arguments(kwargs)
