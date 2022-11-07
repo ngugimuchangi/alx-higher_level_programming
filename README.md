@@ -77,7 +77,7 @@
 * HTTP protocol
 * [0x10-python-network_0](0x10-python-network_0)
 ### 0x11. Python - Network #1
-* Python `urllib` and `request` package
+* Python `urllib` and `request` packages
 * Introduction to `GitHub` API
 * [0x11-python-network_1](0x11-python-network_1)
 ### 0x12. JavaScript - Warm up
