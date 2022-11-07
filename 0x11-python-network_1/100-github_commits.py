@@ -12,7 +12,6 @@ if __name__ == "__main__":
     params = {"per_page": 10, "sort": "author-date", "order": "desc"}
     req = get(url, params=params)
     if req.status_code == 200:
-        print(req.url)
         results = req.json()
         for i in results:
             print("{}: {}".format(i['sha'], i['author']['login']))
