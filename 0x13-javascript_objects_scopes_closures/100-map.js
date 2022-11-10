@@ -5,8 +5,8 @@
  * value of the initial list multiplied by the index in
  * the list
  */
-let list = require('./100-data').list;
+const list = require('./100-data').list;
 
 console.log(list);
-list = list.map(element => element * list.indexOf(element));
-console.log(list);
+const newList = list.map(element => element * list.indexOf(element));
+console.log(newList);
