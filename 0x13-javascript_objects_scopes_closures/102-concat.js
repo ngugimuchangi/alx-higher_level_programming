@@ -10,7 +10,6 @@ if (len > 2) {
   fs.readFile(args[0], (err, data) => {
     if (err) throw err;
     str += data;
-    console.log(str);
   });
   fs.readFile(args[1], (err, data) => {
     if (err) throw err;
