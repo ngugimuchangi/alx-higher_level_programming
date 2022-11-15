@@ -1,7 +1,7 @@
 # 0x07. Python - Test-driven development
 ## Tasks
 ### Interactive tests for:
-0. A fuunction that adds two integers
+0. A function that adds two integers
 1. A function that divides all elements of a matrix
 2. A function that prints strings
 3. A function that prints a square with the charactr #
