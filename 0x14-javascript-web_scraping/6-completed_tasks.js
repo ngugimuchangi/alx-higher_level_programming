@@ -15,12 +15,25 @@ request(url, (error, response, body) => {
     for (const toDo of toDos) {
       if (toDo.userId === userId) {
         count++;
-      } else {
+      }
+      if (toDo.userId !== userId || toDos.indexOf(toDo) === toDos.length - 1) {
         output[userId] = count;
         count = 1;
         userId = toDo.userId;
       }
     }
-    console.log(JSON.stringify(output));
+
+//    const keys = Object.keys(output);
+
+//    for (const userId of keys) {
+//      if (keys.indexOf(userId) === 0) {
+//        console.log(`{ '${userId}': ${output[userId]}`);
+//      } else if (keys.indexOf(userId) === keys.length - 1) {
+//        console.log(`  '${userId}': ${output[userId]} }`);
+//      } else {
+//        console.log(`  '${userId}': ${output[userId]}`);
+//      }
+//    }
+    console.log(output);
   }
 });
