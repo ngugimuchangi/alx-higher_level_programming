@@ -3,7 +3,7 @@
 // tasks completed by user id
 
 const request = require('request');
-const url = process.argv[2] + '?completed=true';
+const url = process.argv[2];
 
 request(url, (error, response, body) => {
   if (error) console.error(error);
@@ -12,12 +12,14 @@ request(url, (error, response, body) => {
     const output = {};
 
     for (const toDo of toDos) {
-      if (output[toDo.userId] === undefined) {
-        output[toDo.userId] = 1;
-      } else {
-        output[toDo.userId]++;
+      if (toDo.completed === true) {
+        if (output[toDo.userId] === undefined) {
+          output[toDo.userId] = 1;
+        } else {
+          output[toDo.userId]++;
+        }
       }
     }
-    if (output) console.log(output);
+    console.log(output);
   }
 });
