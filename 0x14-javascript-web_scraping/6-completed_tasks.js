@@ -23,17 +23,17 @@ request(url, (error, response, body) => {
       }
     }
 
-//    const keys = Object.keys(output);
+    const keys = Object.keys(output);
 
-//    for (const userId of keys) {
-//      if (keys.indexOf(userId) === 0) {
-//        console.log(`{ '${userId}': ${output[userId]}`);
-//      } else if (keys.indexOf(userId) === keys.length - 1) {
-//        console.log(`  '${userId}': ${output[userId]} }`);
-//      } else {
-//        console.log(`  '${userId}': ${output[userId]}`);
-//      }
-//    }
-    console.log(output);
+    for (const userId of keys) {
+      if (keys.indexOf(userId) === 0) {
+        console.log(`{ '${userId}': ${output[userId]},`);
+      } else if (keys.indexOf(userId) === keys.length - 1) {
+        console.log(`  '${userId}': ${output[userId]} }`);
+      } else {
+        console.log(`  '${userId}': ${output[userId]},`);
+      }
+    }
+    //    console.log(output);
   }
 });
