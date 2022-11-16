@@ -1,5 +1,5 @@
 #!/usr/bin/node
-// Script ath compute the number of
+// Script that compute the number of
 // tasks completed by user id
 
 const request = require('request');
