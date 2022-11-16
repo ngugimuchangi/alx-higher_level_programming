@@ -6,8 +6,8 @@ const request = require('request');
 const url = process.argv[2] + '?completed=true';
 
 request(url, (error, response, body) => {
-  if (error) throw error;
-  if (response) {
+  if (error) console.error(error);
+  if (response && response.statusCode === 200) {
     const toDos = JSON.parse(body);
     const output = {};
 
