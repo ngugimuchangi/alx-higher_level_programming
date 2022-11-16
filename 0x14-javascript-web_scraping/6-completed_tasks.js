@@ -18,6 +18,6 @@ request(url, (error, response, body) => {
         output[toDo.userId]++;
       }
     }
-    console.log(output);
+    if (output) console.log(output);
   }
 });
