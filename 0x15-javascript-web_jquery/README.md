@@ -1,7 +1,7 @@
 # 0x15. JavaScript - Web jQuery
 
 ## About
-	* Introduction to `jQuery` library
+* Introduction to `jQuery` library
   - DOM manipulation
   - `AJAX` calls
 
