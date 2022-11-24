@@ -111,3 +111,6 @@
 ### 0x14. JavaScript - Web scraping
 * Web scraping with `JavaScript`
 * [0x14-javascript-web_scraping](0x14-javascript-web_scraping)
+### 0x15 0x15. JavaScript - Web jQuery
+* Working with jQuery library for dynamic websites
+* [0x15-javascript-web_jquery](0x15-javascript-web_jquery)
