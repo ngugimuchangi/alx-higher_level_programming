@@ -30,7 +30,7 @@
 8. JavaScript script that fetches and lists the `title` for all movies by using this URL: `https://swapi-api.hbtn.io/api/films/?format=json`
   	* All movie titles must be list in the HTML tag `UL#list_movies`
   	* [8-script.js](8-script.js)
-9. JavaScript script that fetches from `https://fourtonfish.com/hellosalut/?lang=fr` and displays the value of `hello` from that fetch in the HTML tag `DIV#hello`.
+9. JavaScript script that fetches from [https://fourtonfish.com/hellosalut/?lang=fr](https://fourtonfish.com/hellosalut/?lang=fr) and displays the value of `hello` from that fetch in the HTML tag `DIV#hello`.
   	* The translation of “hello” must be displayed in the HTML tag `DIV#hello`
   	* [9-script.js](9-script.js)
 10. JavaScript script that updates the text color of the `<header>` element to red (`#FF0000`) using document.querySelector to select the HTML tag
@@ -43,13 +43,13 @@
   	* When the user clicks on `DIV#clear_list`: all elements of the list are removed
   	* [101-script.js](101-script.js)
 12. JavaScript script that fetches and prints how to say “Hello” depending on the language
-  	* You should use this API service: `https://www.fourtonfish.com/hellosalut/hello/`
+  	* You should use this API service: [https://www.fourtonfish.com/hellosalut/hello/](https://www.fourtonfish.com/hellosalut/hello/)
   	* The language code will be the value entered in the tag `INPUT#language_code` (ex: `es`, `fr`, `en` etc.)
   	* The translation must be fetched when the user clicks on `INPUT#btn_translate`
   	* The translation of “Hello” must be displayed in the HTML tag `DIV#hello`
   	* [102-script.js](102-script.js)
 13. JavaScript script that fetches and prints how to say “Hello” depending on the language
-  	* You should use this API service: `https://www.fourtonfish.com/hellosalut/hello/`
+  	* You should use this API service: [https://www.fourtonfish.com/hellosalut/hello/](https://www.fourtonfish.com/hellosalut/hello/)
   	* The language code will be the value entered in the tag `INPUT#language_code` (ex: `es`, `fr`, `en` etc.)
   	* The translation must be fetched when the user clicks on INPUT#btn_translate OR presses ENTER when the focus is on `INPUT#language_code`
   	* The translation of “Hello” must be displayed in the HTML `tag DIV#hello`
