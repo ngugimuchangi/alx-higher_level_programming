@@ -1,9 +1,11 @@
 // Adds keypress and click event listeners to
 // text field and button, respectively, in order
 // to send ajax requests
+// NB: The endpoint https://fourtonfish.com/hellosalut/
+//     has change to: https://stefanbohacek.com/hellosalut/
 function translate () {
   const language = $('input#language_code').val();
-  const url = 'https://www.fourtonfish.com/hellosalut/?lang=' + language;
+  const url = 'https://stefanbohacek.com/hellosalut/?lang=' + language;
   $.ajax({
     type: 'GET',
     url: url,
